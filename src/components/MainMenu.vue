@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MenuButton from './MenuButton.vue';
 import MenuButtonGroup from './MenuButtonGroup.vue';
-import { useNav } from '../composables/useNav';
+// import { useNav } from '../composables/useNav';
 
 import { useRouter } from 'vue-router';
 const router = useRouter();
@@ -18,7 +18,7 @@ function goTo(path: route): void {
 </script>
 
 <template>
-    <div class="flex flex-col md:basis-1/5 scroll-smooth overflow-scroll">
+    <div class="flex flex-row sm:flex-col md:basis-1/5 scroll-smooth overflow-scroll">
         <MenuButtonGroup title="Home">
             <MenuButton small @click="goTo({ name: 'home' })">My Dashboard</MenuButton>
             <MenuButton small @click="goTo({ name: 'settings' })">Settings</MenuButton>

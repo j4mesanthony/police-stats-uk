@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import MainMenu from './components/MainMenu.vue';
-import LinkItem from './components/LinkItem.vue';
 </script>
 
 <template>
