@@ -1,10 +1,4 @@
-export function useNav() {
+export function useNav(): void {
 
-    function goToRoute() {
-
-    }
-
-    return {
-        goToRoute()
-    }
+    
 }
