@@ -15,10 +15,12 @@ export default createRouter({
             component: ContentWrapper,
             children: [
                 {
+                    name: 'home',
                     path: '',
                     component: HomeDashboard
                 },
                 {
+                    name: 'settings',
                     path: 'settings',
                     component: SettingsArea
                 }
