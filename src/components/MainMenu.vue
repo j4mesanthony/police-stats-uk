@@ -18,7 +18,7 @@ function goTo(path: route): void {
 </script>
 
 <template>
-    <div class="flex flex-row sm:flex-col md:basis-1/5 scroll-smooth overflow-scroll">
+    <div class="flex flex-row md:flex-col md:basis-1/5 scroll-smooth overflow-scroll">
         <MenuButtonGroup title="Home">
             <MenuButton small @click="goTo({ name: 'home' })">My Dashboard</MenuButton>
             <MenuButton small @click="goTo({ name: 'settings' })">Settings</MenuButton>
