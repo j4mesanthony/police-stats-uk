@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import LinkItem from './LinkItem.vue';
-
 const props = defineProps({
     small: {
         type: Boolean,
@@ -11,6 +9,11 @@ const props = defineProps({
         type: Boolean,
         default: false
     },
+
+    isActive: {
+        type: Boolean,
+        default: false
+    }
 });
 </script>
 
