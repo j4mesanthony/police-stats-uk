@@ -18,7 +18,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <a :class="{ 'text-sm': small, 'text-lg': large, 'underline': underline }" class="text-slate-400 cursor-pointer hover:text-slate-300">
+    <a :class="{ 'text-sm': small, 'text-lg': large, 'underline': underline }" class="cursor-pointer text-slate-800 hover:text-red-400 dark:text-slate-400 dark:hover:text-slate-300">
         <slot>Anchor Text</slot>
     </a>
 </template>
