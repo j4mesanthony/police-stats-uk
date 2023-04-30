@@ -1,18 +1,14 @@
 <script setup lang="ts">
-import { computed } from 'vue'; 
-const props = defineProps({
-    title: {
-        type: String,
-        required: true
-    }
-});
+import { RouteRecordName } from 'vue-router';
 
-const heading = computed<string>(() => `${props.title}:`)
+const props = defineProps<{
+    title: RouteRecordName | undefined
+}>();
 </script>
 
 <template>
     <div class="p-5">
-        <h4 class="text-slate-50 font-semibold text-md mb-2">{{ heading }}</h4>
+        <h4 class="text-slate-50 font-semibold text-md mb-2">{{ title }}</h4>
         <slot></slot>
     </div>
 </template>

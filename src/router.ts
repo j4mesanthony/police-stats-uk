@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-
 import ContentWrapper from './components/ContentWrapper.vue';
 import HomeDashboard from './views/HomeDashboard.vue';
 import SettingsArea from './views/SettingsArea.vue';
@@ -11,11 +10,15 @@ export default createRouter({
         {  path: '/', redirect: '/home' },
 
         {
+            name: 'home',
             path: '/home',
             component: ContentWrapper,
+            meta: {
+                isParent: true
+            },
             children: [
                 {
-                    name: 'home',
+                    name: 'dashboard',
                     path: '',
                     component: HomeDashboard
                 },
@@ -23,7 +26,28 @@ export default createRouter({
                     name: 'settings',
                     path: 'settings',
                     component: SettingsArea
-                }
+                },
+            ]
+        },
+
+        {
+            name: 'crime related',
+            path: '/home',
+            component: ContentWrapper,
+            meta: {
+                isParent: true
+            },
+            children: [
+                {
+                    name: 'street level',
+                    path: '',
+                    component: HomeDashboard
+                },
+                {
+                    name: 'outcomes',
+                    path: 'settings',
+                    component: SettingsArea
+                },
             ]
         }
     ]

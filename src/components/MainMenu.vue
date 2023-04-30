@@ -1,38 +1,21 @@
 <script setup lang="ts">
+import { RouteRecord } from 'vue-router';
 import MenuButton from './MenuButton.vue';
 import MenuButtonGroup from './MenuButtonGroup.vue';
-// import { useNav } from '../composables/useNav';
+import { useNav } from '../composables/useNav';
+import { useStringFormatter } from '../composables/useStringFormatter';
 
-import { useRouter } from 'vue-router';
-const router = useRouter();
-// TODO: Implement menu buttons using available routes.
-
-// TODO: Move to useNav() composable
-interface route {
-    name: string
-}
-
-function goTo(path: route): void {
-    router.push(path);
-}
+const { allRoutes, goTo } = useNav();
+const { toTitleCase } = useStringFormatter();
+const routes: Array<RouteRecord> = allRoutes.filter(r => r.meta.isParent);
 </script>
-
+<!-- TODO: Refactor to computed with title casings -->
 <template>
     <div class="flex flex-row md:flex-col md:basis-1/5 scroll-smooth overflow-scroll">
-        <MenuButtonGroup title="Home">
-            <MenuButton small @click="goTo({ name: 'home' })">My Dashboard</MenuButton>
-            <MenuButton small @click="goTo({ name: 'settings' })">Settings</MenuButton>
-            <MenuButton small>Logout</MenuButton>
-        </MenuButtonGroup>
-
-        <MenuButtonGroup title="Force related">
-            <MenuButton small>Find by location</MenuButton>
-            <MenuButton small>Senior officers</MenuButton>
-        </MenuButtonGroup>
-
-        <MenuButtonGroup title="Crime related">
-            <MenuButton small>Street level crimes</MenuButton>
-            <MenuButton small>Crime categories</MenuButton>
+        <MenuButtonGroup  v-for="group in routes" :title="toTitleCase(group.name as string)">
+            <MenuButton v-for="child in group.children" @click="goTo(child.name as string)" small>
+                {{ toTitleCase(child.name as string) }}
+            </MenuButton>
         </MenuButtonGroup>
     </div>
 </template>
