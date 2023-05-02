@@ -12,7 +12,7 @@ export default createRouter({
 
         {
             name: 'home',
-            path: '/home',
+            path: '/',
             component: ContentWrapper,
             meta: {
                 isParent: true
