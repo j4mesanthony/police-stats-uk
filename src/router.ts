@@ -7,9 +7,6 @@ const SettingsArea = () => import('./views/SettingsArea.vue');
 export default createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '', redirect: '/home' },
-        {  path: '/', redirect: '/home' },
-
         {
             name: 'home',
             path: '/',
@@ -33,7 +30,7 @@ export default createRouter({
 
         {
             name: 'crime related',
-            path: '/home',
+            path: '/',
             component: ContentWrapper,
             meta: {
                 isParent: true

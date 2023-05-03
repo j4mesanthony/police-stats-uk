@@ -5,7 +5,7 @@ describe('toTitleCase', () => {
     const { toTitleCase } = useStringFormatter();
 
     it('should take in lowercase single word "HOME" and return "Home"', () => {
-        const result = toTitleCase('home');
+        const result = toTitleCase('HOME');
         expect(result).toBe('Home');
     });
 
