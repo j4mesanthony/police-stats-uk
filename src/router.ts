@@ -9,7 +9,7 @@ export default createRouter({
     routes: [
         {
             name: 'home',
-            path: '/',
+            path: '/home',
             component: ContentWrapper,
             meta: {
                 isParent: true
@@ -47,6 +47,8 @@ export default createRouter({
                     component: SettingsArea
                 },
             ]
-        }
+        },
+
+        { path: '/:pathMatch(.*)', redirect: '/home' }
     ]
 });
