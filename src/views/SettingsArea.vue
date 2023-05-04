@@ -4,6 +4,6 @@
 <template>
     <div>
         <h2 class="text-slate-50 text-3xl font-bold mb-2">Settings</h2>
-        <p class="text-slate-400">Stuff in here to configure reporting items and associated settings.</p>
+        <p class="text-slate-800 dark: text-slate-400">Stuff in here to configure reporting items and associated settings.</p>
     </div>
 </template>
