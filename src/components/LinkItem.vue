@@ -13,12 +13,17 @@ const props = defineProps({
     underline: {
         type: Boolean,
         default: true
+    },
+
+    isActive: {
+        type: Boolean,
+        default: false
     }
 });
 </script>
 
 <template>
-    <a :class="{ 'text-sm': small, 'text-lg': large, 'underline': underline }" class="cursor-pointer text-slate-800 hover:text-red-400 dark:text-slate-400 dark:hover:text-slate-300">
+    <a class="cursor-pointer text-slate-800 dark:text-slate-400 dark:hover:text-slate-300" :class="{ 'text-sm': small, 'text-lg': large, 'underline': underline, 'dark:text-cyan-400': isActive }">
         <slot>Anchor Text</slot>
     </a>
 </template>

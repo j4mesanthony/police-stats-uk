@@ -8,16 +8,17 @@ import { useStringFormatter } from '../composables/useStringFormatter';
 import { Route } from '../models/route';
 
 const { toTitleCase } = useStringFormatter();
-const { availableRoutes, goTo } = useNav();
+const { availableRoutes, goTo, router } = useNav();
+const currentRoute = computed(() => router.currentRoute.value.name);
 const routes = computed(() => recursiveTitleCaseRouteNames(availableRoutes));
 
 function recursiveTitleCaseRouteNames(original: Array<RouteRecord>): Array<Route> {
     let remapped: Array<Route> = original.map((x) => {
         let children = [];
         if (x.children) children.push(...recursiveTitleCaseRouteNames(x.children as Array<RouteRecord>));
-        return new Route(toTitleCase(x.name as string), x.path, children);
+        return new Route(toTitleCase(x.name as string), x.path, x.name === currentRoute.value, children);
     });
-
+    
     return remapped;
 }
 </script>
@@ -25,7 +26,7 @@ function recursiveTitleCaseRouteNames(original: Array<RouteRecord>): Array<Route
 <template>
     <div class="flex flex-row md:flex-col md:basis-1/5 scroll-smooth overflow-scroll">
         <MenuButtonGroup v-for="group in routes" :title="group.name">
-            <MenuButton v-for="child in group.children" @click="goTo(child.name)" small>
+            <MenuButton v-for="child in group.children" :isActive="child.isActive" @click="goTo(child.name)" small>
                 {{ child.name }}
             </MenuButton>
         </MenuButtonGroup>

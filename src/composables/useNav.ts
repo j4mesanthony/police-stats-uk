@@ -14,5 +14,6 @@ export function useNav(): UseNav {
     return {
         availableRoutes,
         goTo,
+        router,
     }
 }
