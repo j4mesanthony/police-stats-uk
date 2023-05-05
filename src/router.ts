@@ -48,27 +48,7 @@ export default createRouter({
                 },
             ]
         },
-
-        {
-            name: 'Neighbourhoods',
-            path: '/',
-            component: ContentWrapper,
-            meta: {
-                isParent: true
-            },
-            children: [
-                {
-                    name: 'Reports',
-                    path: '',
-                    component: HomeDashboard
-                },
-                {
-                    name: 'Risks',
-                    path: 'settings',
-                    component: SettingsArea
-                },
-            ]
-        },
+        
 
         { path: '/:pathMatch(.*)', redirect: '/home' }
     ]
