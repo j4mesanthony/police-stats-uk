@@ -3,7 +3,7 @@ import type { Ref } from 'vue';
 import { ArrayOrNull, StringOrNull } from '../types/typeLibrary';
 import { UseFetch } from '../interfaces/interfaceLibrary';
 
-const API_BASE = 'https://data.police.uk/';
+const API_BASE = 'https://data.police.uk/api/';
 
 export function useFetch(url: string): UseFetch {
     const data: Ref<ArrayOrNull> = ref(null);
