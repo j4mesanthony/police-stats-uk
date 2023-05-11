@@ -27,29 +27,7 @@ export default createRouter({
                 },
             ]
         },
-
-        {
-            name: 'crime related',
-            path: '/',
-            component: ContentWrapper,
-            meta: {
-                isParent: true
-            },
-            children: [
-                {
-                    name: 'street level',
-                    path: '',
-                    component: HomeDashboard
-                },
-                {
-                    name: 'outcomes',
-                    path: 'settings',
-                    component: SettingsArea
-                },
-            ]
-        },
         
-
         { path: '/:pathMatch(.*)', redirect: '/home' }
     ]
 });

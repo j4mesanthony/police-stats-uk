@@ -1,6 +1,4 @@
-interface UseStringFormatter {
-    toTitleCase: (input: string) => string
-}
+import { UseStringFormatter } from "../interfaces/interfaceLibrary";
 
 export function useStringFormatter(): UseStringFormatter {
 
