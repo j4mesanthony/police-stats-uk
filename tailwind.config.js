@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {},
+    minHeight: {
+      '90': '90px',
+    }
   },
   plugins: [],
 }
