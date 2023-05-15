@@ -26,21 +26,21 @@ onMounted(() => {
                         <tr>
                             <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400 text-left">Avon and Somerset Constabulary</td>
                             <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400 text-left">
-                                <LinkItem class="mr-1" :underline="false">view</LinkItem>
+                                <LinkItem class="mr-1" :underline="false">View</LinkItem>
                             </td>
                         </tr>
 
                         <tr>
                             <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400 text-left">Merseyside Police</td>
                             <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400 text-left">
-                                <LinkItem class="mr-1" :underline="false">view</LinkItem>
+                                <LinkItem class="mr-1" :underline="false">View</LinkItem>
                             </td>
                         </tr>
 
                         <tr>
                             <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400 text-left">Greater Manchester Police</td>
                             <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400 text-left">
-                                <LinkItem class="mr-1" :underline="false">view</LinkItem>
+                                <LinkItem class="mr-1" :underline="false">View</LinkItem>
                             </td>
                         </tr>
                     </tbody>
