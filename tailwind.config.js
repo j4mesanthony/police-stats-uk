@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {},
     minHeight: {
-      '90': '90px',
+      '100': '100px',
     }
   },
   plugins: [],

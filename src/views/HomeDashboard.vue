@@ -20,17 +20,19 @@ onMounted(() => {
     
     <div class="flex flex-row flex-wrap gap-2">
       <FlexPanelItem>
-        <b class="ml-1"><LinkItem @click="goTo(ACTIVE_FORCES)" :underline="false">{{ forcesCount }}</LinkItem></b>
-        Active Forces
+        <p class="mb-1 font-bold text-4xl"><LinkItem @click="goTo(ACTIVE_FORCES)" :underline="false">{{ forcesCount }}</LinkItem></p>
+        <p>Active Forces</p>
         <!-- TODO: SummaryOutput :value :title -->
       </FlexPanelItem>
 
       <FlexPanelItem>
-        Placeholder 2
+        <p class="mb-1 font-bold text-4xl">-</p>
+        <p>Crimes</p>
       </FlexPanelItem>
       
       <FlexPanelItem>
-        Placeholder 3
+        <p class="mb-1 font-bold text-4xl">-</p>
+        <p>Investigations</p>
       </FlexPanelItem>
     </div>
   </div>
