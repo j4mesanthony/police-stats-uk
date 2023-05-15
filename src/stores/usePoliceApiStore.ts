@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia';
 import { useFetch } from '../composables/useFetch';
 import { Store } from '../types/typeLibrary';
-import { Force, Person } from '../interfaces/interfaceLibrary';
+import { Person } from '../interfaces/interfaceLibrary';
+import { Force } from '../models/force';
 
 const { get } = useFetch();
 
@@ -21,7 +22,8 @@ export const usePoliceApiStore = defineStore('policeApi', {
         getForces() {
             return get('forces')
                 .then((res: Array<Force>) => {
-                    this.allForces.push(...res);
+                    const models = res.map(x => new Force(x.id, x.name));
+                    this.allForces.push(...models);
                 });
         },
 

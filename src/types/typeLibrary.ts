@@ -1,4 +1,5 @@
-import { Force, Person } from "../interfaces/interfaceLibrary";
+import { Person } from "../interfaces/interfaceLibrary";
+import { Force } from '../models/force';
 
 export type Store = {
     allForces: Array<Force>,

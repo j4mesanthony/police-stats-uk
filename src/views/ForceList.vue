@@ -26,7 +26,7 @@ onMounted(() => {
                         <tr v-for="force in allForces" :key="force.id">
                             <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400 text-left">{{ force.name }}</td>
                             <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400 text-left">
-                                <LinkItem class="mr-1" :underline="false">View</LinkItem>
+                                <LinkItem class="mr-1" :underline="false" @click="force.view()">View</LinkItem>
                             </td>
                         </tr>
                     </tbody>
