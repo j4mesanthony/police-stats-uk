@@ -16,7 +16,7 @@ onMounted(() => {
         <h2 class="text-slate-50 text-3xl font-bold mb-6">Available Forces by Region</h2>
         
         <div class="flex flex-row flex-wrap">
-            <FlexPanelItem>
+            <!-- <FlexPanelItem> -->
                 <table class="border-collapse table-auto w-full text-sm">
                     <tr>
                         <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Name</th>
@@ -33,7 +33,7 @@ onMounted(() => {
                 </table>
 
                 <!-- <small>{{ allForces }}</small> -->
-            </FlexPanelItem>
+            <!-- </FlexPanelItem> -->
         </div>
     </div>
 </template>
