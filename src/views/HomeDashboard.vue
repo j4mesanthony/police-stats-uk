@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useFetch } from '../composables/useFetch';
+import { computed, onMounted } from 'vue';
+import { usePoliceApiStore } from '../stores/usePoliceApiStore';
+import { useNav } from '../composables/useNav';
 
-const { data: forces } = useFetch('forces');
-const { data: derbyshireStats } = useFetch('stops-force?force=derbyshire');
-const { data: cumbriaStats } = useFetch('stops-force?force=cumbria');
+const { goTo } = useNav();
+const policeApiStore = usePoliceApiStore(); 
+const forcesCount = computed(() => policeApiStore.forcesCount);
 
-const forceCount = computed(() => forces.value?.length ?? 0);
-const derbyshireCount = computed(() => derbyshireStats.value?.length ?? 0);
-const cumbriaCount = computed(() => cumbriaStats.value?.length ?? 0);
+onMounted(() => {
+  if (forcesCount.value > 0) return;
+  policeApiStore.getForces();
+});
 </script>
 
 <template>
@@ -17,16 +19,16 @@ const cumbriaCount = computed(() => cumbriaStats.value?.length ?? 0);
     
     <div class="flex flex-row flex-wrap gap-2">
       <FlexPanelItem>
-        {{ forceCount }} Active Forces
+        Active Forces <b class="ml-1"><LinkItem @click="goTo('active')" :underline="false">{{ forcesCount }}</LinkItem></b>
       </FlexPanelItem>
 
-      <FlexPanelItem>
+      <!-- <FlexPanelItem>
         {{ derbyshireCount }} Stop & Search (Derbyshire)
       </FlexPanelItem>
       
       <FlexPanelItem>
         {{ cumbriaCount }} Stop & Search (Cumbria)
-      </FlexPanelItem>
+      </FlexPanelItem> -->
     </div>
   </div>
 </template>

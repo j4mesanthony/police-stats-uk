@@ -1,6 +1,9 @@
-import type { Ref } from 'vue';
 import { Router, RouteRecord } from 'vue-router';
-import { ArrayOrNull, StringOrNull } from '../types/typeLibrary';
+
+export interface Force {
+    id: string;
+    name: string;
+}
 
 export interface Route {
     name: string,
@@ -10,8 +13,7 @@ export interface Route {
 }
 
 export interface UseFetch {
-    data: Ref<ArrayOrNull>,
-    error: Ref<StringOrNull>
+    get: (url: string) => any
 }
 
 export interface UseNav {
