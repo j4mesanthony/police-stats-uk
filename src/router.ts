@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import * as ROUTENAMES from './constants/routes';
 
 const ContentWrapper = () => import('./components/ContentWrapper.vue');
 const HomeDashboard = () => import('./views/HomeDashboard.vue');
@@ -9,7 +10,7 @@ export default createRouter({
     history: createWebHistory(),
     routes: [
         {
-            name: 'home',
+            name: ROUTENAMES.HOME,
             path: '/home',
             component: ContentWrapper,
             meta: {
@@ -17,12 +18,12 @@ export default createRouter({
             },
             children: [
                 {
-                    name: 'dashboard',
+                    name: ROUTENAMES.DASHBOARD,
                     path: '',
                     component: HomeDashboard
                 },
                 {
-                    name: 'settings',
+                    name: ROUTENAMES.SETTINGS,
                     path: 'settings',
                     component: SettingsArea
                 },
@@ -30,7 +31,7 @@ export default createRouter({
         },
 
         {
-            name: 'forces',
+            name: ROUTENAMES.FORCES,
             path: '/forces',
             component: ContentWrapper,
             meta: {
@@ -38,7 +39,7 @@ export default createRouter({
             },
             children: [
                 {
-                    name: 'active',
+                    name: ROUTENAMES.ACTIVE_FORCES,
                     path: '',
                     component: ForceList
                 },
