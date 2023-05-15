@@ -3,4 +3,5 @@ export const
     DASHBOARD = 'dashboard',
     SETTINGS = 'settings',
     FORCES = 'forces',
-    ACTIVE_FORCES = 'by region';
+    ACTIVE_FORCES = 'by region',
+    FORCE = 'force';

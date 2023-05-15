@@ -43,6 +43,14 @@ export default createRouter({
                     path: '',
                     component: ForceList
                 },
+                // {
+                //     name: ROUTENAMES.FORCE,
+                //     path: '',
+                //     component: ForceView,
+                //     props: {
+
+                //     }
+                // },
             ]
         },
         
