@@ -5,12 +5,12 @@ import { useNav } from '../composables/useNav';
 import { ACTIVE_FORCES } from '../constants/routes';
 
 const { goTo } = useNav();
-const policeApiStore = usePoliceApiStore(); 
-const forcesCount = computed(() => policeApiStore.forcesCount);
+const store = usePoliceApiStore(); 
+const forcesCount = computed(() => store.forcesCount);
 
 onMounted(() => {
   if (forcesCount.value > 0) return;
-  policeApiStore.getForces();
+  store.getForces();
 });
 </script>
 
@@ -23,13 +23,13 @@ onMounted(() => {
         Active Forces <b class="ml-1"><LinkItem @click="goTo(ACTIVE_FORCES)" :underline="false">{{ forcesCount }}</LinkItem></b>
       </FlexPanelItem>
 
-      <!-- <FlexPanelItem>
-        {{ derbyshireCount }} Stop & Search (Derbyshire)
+      <FlexPanelItem>
+        Placeholder 2
       </FlexPanelItem>
       
       <FlexPanelItem>
-        {{ cumbriaCount }} Stop & Search (Cumbria)
-      </FlexPanelItem> -->
+        Placeholder 3
+      </FlexPanelItem>
     </div>
   </div>
 </template>
