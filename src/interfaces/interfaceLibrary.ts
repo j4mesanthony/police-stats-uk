@@ -5,6 +5,12 @@ export interface Force {
     name: string;
 }
 
+export interface Person {
+    bio: string;
+    name: string;
+    rank: string;
+}
+
 export interface Route {
     name: string,
     path: string,

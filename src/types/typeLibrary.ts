@@ -1,7 +1,6 @@
-import { Force } from "../interfaces/interfaceLibrary";
+import { Force, Person } from "../interfaces/interfaceLibrary";
 
 export type Store = {
-    allForces: Array<Force>
+    allForces: Array<Force>,
+    selectedForceSeniorOfficers: Array<Person>
 }
-
-export type StringOrNull = string | null;

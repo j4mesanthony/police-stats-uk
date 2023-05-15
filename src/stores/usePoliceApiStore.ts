@@ -1,13 +1,14 @@
 import { defineStore } from 'pinia';
 import { useFetch } from '../composables/useFetch';
 import { Store } from '../types/typeLibrary';
-import { Force } from '../interfaces/interfaceLibrary';
+import { Force, Person } from '../interfaces/interfaceLibrary';
 
 const { get } = useFetch();
 
 export const usePoliceApiStore = defineStore('policeApi', {
     state: (): Store => ({
         allForces: [],
+        selectedForceSeniorOfficers: [],
     }),
 
     getters: {
@@ -18,10 +19,17 @@ export const usePoliceApiStore = defineStore('policeApi', {
 
     actions: {
         getForces() {
-            get('forces')
+            return get('forces')
                 .then((res: Array<Force>) => {
                     this.allForces.push(...res);
                 });
-        }
+        },
+
+        getSeniorOfficers(force: string) {
+            return get(`forces/${force}/people`)
+                .then((res: Array<Person>) => {
+                    this.selectedForceSeniorOfficers.push(...res);
+                });
+        },
     }
 })
