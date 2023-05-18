@@ -4,6 +4,7 @@ import * as ROUTENAMES from './constants/routes';
 const ContentWrapper = () => import('./components/ContentWrapper.vue');
 const HomeDashboard = () => import('./views/HomeDashboard.vue');
 const ForceList = () => import('./views/ForceList.vue');
+const Force = () => import('./views/Force.vue');
 const SettingsArea = () => import('./views/SettingsArea.vue');
 
 export default createRouter({
@@ -43,14 +44,12 @@ export default createRouter({
                     path: '',
                     component: ForceList
                 },
-                // {
-                //     name: ROUTENAMES.FORCE,
-                //     path: '',
-                //     component: ForceView,
-                //     props: {
-
-                //     }
-                // },
+                {
+                    name: ROUTENAMES.FORCE,
+                    path: ':id',
+                    component: Force,
+                    props: true,
+                },
             ]
         },
         

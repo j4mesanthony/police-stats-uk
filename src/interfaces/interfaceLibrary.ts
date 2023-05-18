@@ -24,7 +24,7 @@ export interface UseFetch {
 
 export interface UseNav {
     availableRoutes: Array<RouteRecord>
-    goTo: (path: string) => void,
+    goTo: (path: string | { name: string, params: any }) => void,
     router: Router
 }
 
