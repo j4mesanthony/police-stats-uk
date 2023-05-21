@@ -5,6 +5,21 @@ export interface Force {
     name: string;
 }
 
+export interface ForceDetail {
+    description: string;
+    url: string;
+    engagement_methods: EngagementMethod[];
+    telephone: string;
+    id: string;
+    name: string;
+}
+
+export interface EngagementMethod {
+    url: string;
+    description: string;
+    title: string;
+}
+
 export interface Person {
     bio: string;
     name: string;
