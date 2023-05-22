@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onBeforeUnmount } from 'vue';
+import { computed, onBeforeMount } from 'vue';
 import { usePoliceApiStore } from '../stores/usePoliceApiStore';
 
 const store = usePoliceApiStore();
@@ -22,12 +22,12 @@ const description = computed(() => {
     return details.value?.description;
 });
 
-onMounted(() => {
-    store.getForceDetails(props.id);
+onBeforeMount(() => {
+    const storedId = store.selectedForceDetails?.id;
+    const isCached = storedId === props.id;
+    if (!isCached) {
+        store.clearForceDetails();
+        store.getForceDetails(props.id);
+    };
 });
-
-onBeforeUnmount(() => {
-    console.warn('clear details...');
-    store.clearForceDetails();
-})
 </script>

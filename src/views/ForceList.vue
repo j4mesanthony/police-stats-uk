@@ -29,7 +29,7 @@ onMounted(() => {
                         <tr v-for="force in allForces" :key="force.id">
                             <td class="p-4 pl-8 text-left border-b border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">{{ force.name }}</td>
                             <td class="p-4 pl-8 text-left border-b border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">
-                                <LinkItem class="mr-1" :underline="false" @click="goTo({ name: FORCE, params: { id: force.id } })">View</LinkItem>
+                                <LinkItem :underline="false" @click="goTo({ name: FORCE, params: { id: force.id } })">View</LinkItem>
                             </td>
                         </tr>
                     </tbody>
