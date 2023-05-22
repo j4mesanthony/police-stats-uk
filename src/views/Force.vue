@@ -23,6 +23,7 @@ const description = computed(() => {
 });
 
 onBeforeMount(() => {
+    // TODO: Refactor here and in store to add multiple force details to cache and load from there first if available.
     const storedId = store.selectedForceDetails?.id;
     const isCached = storedId === props.id;
     if (!isCached) {

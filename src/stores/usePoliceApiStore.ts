@@ -21,6 +21,7 @@ export const usePoliceApiStore = defineStore('policeApi', {
 
     actions: {
         getForces() {
+            // TODO: Implement call to get stop searches per force id
             return get('forces')
                 .then((res: Array<Force>) => {
                     const models = res.map(x => new Force(x.id, x.name));
