@@ -4,5 +4,5 @@ import { Force } from '../models/force';
 export type Store = {
     allForces: Array<Force>,
     selectedForceSeniorOfficers: Array<Person>,
-    selectedForceDetails: ForceDetail | null
+    selectedForceDetails: any | null
 }

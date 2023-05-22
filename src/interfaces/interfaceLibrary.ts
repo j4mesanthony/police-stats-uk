@@ -14,6 +14,36 @@ export interface ForceDetail {
     name: string;
 }
 
+export interface StopSearch {
+    age_range: string;
+    self_defined_ethnicity: string;
+    outcome_linked_to_object_of_search: null;
+    datetime: string;
+    removal_of_more_than_outer_clothing: boolean;
+    operation: boolean;
+    officer_defined_ethnicity: string;
+    object_of_search: string;
+    involved_person: boolean;
+    gender: string;
+    legislation: string;
+    location: Location;
+    outcome: boolean;
+    type: string;
+    operation_name: null;
+}
+
+export interface Location {
+    latitude:  string;
+    street:    Street;
+    longitude: string;
+}
+
+export interface Street {
+    id:   number;
+    name: string;
+}
+
+
 export interface EngagementMethod {
     url: string;
     description: string;

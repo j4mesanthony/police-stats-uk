@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { useFetch } from '../composables/useFetch';
 import { Store } from '../types/typeLibrary';
-import { Person, ForceDetail } from '../interfaces/interfaceLibrary';
+import { Person, ForceDetail, StopSearch } from '../interfaces/interfaceLibrary';
 import { Force } from '../models/force';
 
 const { get } = useFetch();
@@ -29,11 +29,18 @@ export const usePoliceApiStore = defineStore('policeApi', {
                 });
         },
 
-        getForceDetails(forceId: string): Promise<ForceDetail> {
-            return get(`forces/${forceId}`)
-                .then((res: ForceDetail) => {
-                    this.selectedForceDetails = res;
-                });
+        async getForceDetails(forceId: string): Promise<any> { // TODO: ForceDetailInclStopSearches interface
+            const details: ForceDetail = await get(`forces/${forceId}`);
+            const stopSearches: Array<StopSearch> = await get(`stops-force?force=${forceId}`);
+
+            const data = {
+                ...details,
+                stopSearches
+            }
+
+            this.selectedForceDetails = data;
+            
+            return data;
         },
 
         clearForceDetails() {
