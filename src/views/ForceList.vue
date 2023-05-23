@@ -26,7 +26,7 @@ onMounted(() => {
                         <th class="p-4 pt-0 pb-3 pl-8 font-medium text-center border-b dark:border-slate-600 text-slate-400 dark:text-slate-200">Stop Searches</th>
                         <th class="p-4 pt-0 pb-3 pl-8 font-medium text-center border-b dark:border-slate-600 text-slate-400 dark:text-slate-200">Action</th>
                     </tr>
-                    <tbody class="bg-white dark:bg-slate-800">
+                    <tbody>
                         <tr v-for="force in allForces" :key="force.id" class="group">
                             <td class="p-4 pl-8 text-left border-b group-hover:bg-slate-900 border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">{{ force.name }}</td>
                             <td class="p-4 pl-8 text-center border-b group-hover:bg-slate-900 border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">-</td>
