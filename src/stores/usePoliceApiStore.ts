@@ -10,7 +10,7 @@ export const usePoliceApiStore = defineStore('policeApi', {
     state: (): Store => ({
         allForces: [],
         selectedForceSeniorOfficers: [],
-        selectedForceDetails: null,
+        selectedForceDetails: null, // TODO: forceDetails; add to this ForceDetails[] on /force visit to update cache
         stopSearches: {}
     }),
 
