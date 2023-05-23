@@ -3,10 +3,10 @@ import MainMenu from './components/MainMenu.vue';
 </script>
 
 <template>
-  <div class="bg-gradient-to-tr from-slate-300 to-slate-400 dark:bg-gradient-to-tr dark:from-slate-700 dark:to-slate-900 h-screen overflow-scroll flex flex-col md:flex-row mx-auto pt-5">
+  <div class="flex flex-col pt-5 mx-auto overflow-scroll max-w-[1400px] md:flex-row">
     <MainMenu />
 
-    <div class="md:basis-4/5 p-5">
+    <div class="p-5 md:basis-4/5">
       <router-view></router-view>
     </div>
   </div>
