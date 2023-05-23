@@ -4,6 +4,6 @@ import { Force } from '../models/force';
 export type Store = {
     allForces: Force[],
     selectedForceSeniorOfficers: Person[],
-    selectedForceDetails: ForceDetail | null,
+    forceDetails: ForceDetail[],
     stopSearches: any
 }
