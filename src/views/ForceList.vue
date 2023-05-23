@@ -10,7 +10,7 @@ const allForces = computed(() => store.allForces);
 
 onMounted(() => {
   if (allForces.value.length > 0) return;
-  store.getForces();
+  store.fetchForces();
 });
 </script>
 

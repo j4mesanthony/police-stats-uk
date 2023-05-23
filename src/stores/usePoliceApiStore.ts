@@ -10,18 +10,26 @@ export const usePoliceApiStore = defineStore('policeApi', {
     state: (): Store => ({
         allForces: [],
         selectedForceSeniorOfficers: [],
-        selectedForceDetails: null
+        selectedForceDetails: null,
+        stopSearches: {}
     }),
 
     getters: {
         forcesCount(): number {
             return this.allForces.length || 0;
-        }
+        },
+
+        getForceNameById() {
+            return (id: string) => this.allForces.find((x: Force) => x.id === id)?.name;
+        },
+
+        getStopSearchesForId() {
+            return (id: string) => this.stopSearches[id];
+        },
     },
 
     actions: {
-        getForces() {
-            // TODO: Implement call to get stop searches per force id
+        fetchForces() {
             return get('forces')
                 .then((res: Array<Force>) => {
                     const models = res.map(x => new Force(x.id, x.name));
@@ -29,29 +37,29 @@ export const usePoliceApiStore = defineStore('policeApi', {
                 });
         },
 
-        async getForceDetails(forceId: string): Promise<any> { // TODO: ForceDetailInclStopSearches interface
-            const details: ForceDetail = await get(`forces/${forceId}`);
-            const stopSearches: Array<StopSearch> = await get(`stops-force?force=${forceId}`);
-
-            const data = {
-                ...details,
-                stopSearches
-            }
-
-            this.selectedForceDetails = data;
-            
-            return data;
+        fetchForceDetails(forceId: string): Promise<ForceDetail> {
+            return get(`forces/${forceId}`)
+                .then((res: ForceDetail) => {
+                    this.selectedForceDetails = res;
+                });
         },
 
-        clearForceDetails() {
-            this.selectedForceDetails = null;
+        fetchStopSearchesForId(forceId: string): Promise<StopSearch[]> {
+            return get(`stops-force?force=${forceId}`)
+                .then((res: StopSearch[]) => {
+                    this.stopSearches[forceId] = res;
+                });
         },
 
-        getSeniorOfficers(force: string) {
+        fetchSeniorOfficers(force: string) {
             return get(`forces/${force}/people`)
                 .then((res: Array<Person>) => {
                     this.selectedForceSeniorOfficers.push(...res);
                 });
+        },
+
+        clearForceDetails() {
+            this.selectedForceDetails = null;
         },
     }
 })
