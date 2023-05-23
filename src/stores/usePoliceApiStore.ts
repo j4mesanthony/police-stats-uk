@@ -10,7 +10,7 @@ export const usePoliceApiStore = defineStore('policeApi', {
     state: (): Store => ({
         allForces: [],
         selectedForceSeniorOfficers: [],
-        selectedForceDetails: null, // TODO: forceDetails; add to this ForceDetails[] on /force visit to update cache
+        forceDetails: [],
         stopSearches: {}
     }),
 
@@ -20,7 +20,7 @@ export const usePoliceApiStore = defineStore('policeApi', {
         },
 
         getForceNameById() {
-            return (id: string) => this.allForces.find((x: Force) => x.id === id)?.name;
+            return (id: string) => (this.allForces.find((x: Force) => x.id === id)?.name || this.forceDetails.find((x: ForceDetail) => x.id === id));
         },
 
         getStopSearchesForId() {
@@ -40,7 +40,7 @@ export const usePoliceApiStore = defineStore('policeApi', {
         fetchForceDetails(forceId: string): Promise<ForceDetail> {
             return get(`forces/${forceId}`)
                 .then((res: ForceDetail) => {
-                    this.selectedForceDetails = res;
+                    this.forceDetails.push(res);
                 });
         },
 
@@ -58,8 +58,6 @@ export const usePoliceApiStore = defineStore('policeApi', {
                 });
         },
 
-        clearForceDetails() {
-            this.selectedForceDetails = null;
-        },
+        
     }
 })
