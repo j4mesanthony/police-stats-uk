@@ -20,11 +20,14 @@ export const usePoliceApiStore = defineStore('policeApi', {
         },
 
         getForceNameById() {
-            return (id: string) => (this.allForces.find((x: Force) => x.id === id)?.name || this.forceDetails.find((x: ForceDetail) => x.id === id));
+            return (id: string) => 
+                (this.allForces.find((x: Force) => x.id === id)?.name || 
+                this.forceDetails.find((x: ForceDetail) => x.id === id)?.name) ||
+                'Unknown';
         },
 
         getStopSearchesForId() {
-            return (id: string) => this.stopSearches[id];
+            return (id: string): StopSearch[] => this.stopSearches[id];
         },
     },
 
