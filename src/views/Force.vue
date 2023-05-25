@@ -83,10 +83,11 @@ const matureTotal = computed<NumberOrString>(() => {
 });
 
 function getTotalsForAgeRangeMetric(rangeType: string): NumberOrString {
-    const data = store.getStopSearchTotalsForAgeRange(props.id, MATURE);
+    const data: number = store.getStopSearchTotalsForAgeRange(props.id, MATURE);
     return data ? data : '-';
 }
 
+// TODO: Reduce repetition
 const maleTotal = computed<NumberOrString>(() => {
     const data = stopSearches.value?.filter((x: StopSearch) => x.gender === 'Male');
     return data?.length ? data.length : '-';
