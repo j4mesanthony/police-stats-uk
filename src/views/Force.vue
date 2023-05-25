@@ -67,24 +67,25 @@ const stopSearchTotal = computed<NumberOrString>(() => {
 // TODO: New composable to filter an array by key
 
 const juvenileTotal = computed<NumberOrString>(() => {
-    const data = stopSearches.value?.filter((x: StopSearch) => x.age_range === JUVENILE);
-    return data?.length ? data.length : '-';
+    return getTotalsForAgeRangeMetric(JUVENILE);
 });
 
 const youngAdultTotal = computed<NumberOrString>(() => {
-    const data = stopSearches.value?.filter((x: StopSearch) => x.age_range === YOUNG_ADULT);
-    return data?.length ? data.length : '-';
+    return getTotalsForAgeRangeMetric(YOUNG_ADULT);
 });
 
 const adultTotal = computed<NumberOrString>(() => {
-    const data = stopSearches.value?.filter((x: StopSearch) => x.age_range === ADULT);
-    return data?.length ? data.length : '-';
+    return getTotalsForAgeRangeMetric(ADULT);
 });
 
 const matureTotal = computed<NumberOrString>(() => {
-    const data = stopSearches.value?.filter((x: StopSearch) => x.age_range === MATURE);
-    return data?.length ? data.length : '-';
+    return getTotalsForAgeRangeMetric(MATURE);
 });
+
+function getTotalsForAgeRangeMetric(rangeType: string): NumberOrString {
+    const data = store.getStopSearchTotalsForAgeRange(props.id, MATURE);
+    return data ? data : '-';
+}
 
 const maleTotal = computed<NumberOrString>(() => {
     const data = stopSearches.value?.filter((x: StopSearch) => x.gender === 'Male');

@@ -29,6 +29,10 @@ export const usePoliceApiStore = defineStore('policeApi', {
         getStopSearchesForId() {
             return (id: string): StopSearch[] => this.stopSearches[id];
         },
+
+        getStopSearchTotalsForAgeRange() {
+            return (id: string, rangeType: string): number => this.stopSearches[id]?.filter((x: StopSearch) => x.age_range === rangeType).length;
+        },
     },
 
     actions: {
