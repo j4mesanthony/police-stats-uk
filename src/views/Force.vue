@@ -47,15 +47,25 @@ import { computed } from 'vue';
 import { StopSearch } from '../interfaces/interfaceLibrary';
 import { NumberOrString } from '../types/typeLibrary';
 import { JUVENILE, YOUNG_ADULT, ADULT, MATURE } from '../constants/ageRanges';
+import { MALE, FEMALE } from '../constants/genders';
 import { usePoliceApiStore } from '../stores/usePoliceApiStore';
 
-const store = usePoliceApiStore();
+const { 
+    getStopSearchesForId,
+    getStopSearchTotalsForGender,
+    getStopSearchTotalsForAgeRange,
+    getForceNameById,
+    forceDetails,
+    fetchStopSearchesForId,
+    fetchForceDetails,
+} = usePoliceApiStore();
+
 const props = defineProps<{
     id: string
 }>();
 
-const name = computed<string>(() => (store.getForceNameById(props.id)));
-const stopSearches = computed<StopSearch[]>(() => store.getStopSearchesForId(props.id));
+const name = computed<string>(() => (getForceNameById(props.id)));
+const stopSearches = computed<StopSearch[]>(() => getStopSearchesForId(props.id));
 
 const stopSearchTotal = computed<NumberOrString>(() => {
     const data: StopSearch[] = stopSearches.value;
@@ -83,25 +93,33 @@ const matureTotal = computed<NumberOrString>(() => {
 });
 
 function getTotalsForAgeRangeMetric(rangeType: string): NumberOrString {
-    const data: number = store.getStopSearchTotalsForAgeRange(props.id, MATURE);
+    const data: number = getStopSearchTotalsForAgeRange(props.id, rangeType);
     return data ? data : '-';
 }
 
-// TODO: Reduce repetition
 const maleTotal = computed<NumberOrString>(() => {
-    const data = stopSearches.value?.filter((x: StopSearch) => x.gender === 'Male');
-    return data?.length ? data.length : '-';
+    return getTotalsForGenderMetric(MALE);
 });
 
 const femaleTotal = computed<NumberOrString>(() => {
-    const data = stopSearches.value?.filter((x: StopSearch) => x.gender === 'Female');
-    return data?.length ? data.length : '-';
+    return getTotalsForGenderMetric(FEMALE);
 });
 
-const isCached = !!store.forceDetails.find(x => x.id === props.id);
+function getTotalsForGenderMetric(gender: string): NumberOrString {
+    const data: number = getStopSearchTotalsForGender(props.id, gender);
+    return data ? data : '-';
+}
+
+// TODO: Implement this instead of the above getTotals functions
+// function getTotalsForMetric(metricType: string, metricParam: string): NumberOrString {
+//     const data: number = metricType === 'gender' ? getStopSearchTotalsForGender(props.id, metricParam) : getStopSearchTotalsForAgeRange(props.id, metricParam);
+//     return data ? data : '-';
+// }
+
+const isCached = !!forceDetails.find(x => x.id === props.id);
 if (!isCached) {
-    store.fetchForceDetails(props.id);
-    store.fetchStopSearchesForId(props.id);
+    fetchForceDetails(props.id);
+    fetchStopSearchesForId(props.id);
 };
 
 </script>
