@@ -45,19 +45,18 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { StopSearch } from '../interfaces/interfaceLibrary';
-import { NumberOrString } from '../types/typeLibrary';
+import { NumberOrString, StopSearchMetric } from '../types/typeLibrary';
 import { JUVENILE, YOUNG_ADULT, ADULT, MATURE } from '../constants/ageRanges';
 import { MALE, FEMALE } from '../constants/genders';
 import { usePoliceApiStore } from '../stores/usePoliceApiStore';
 
 const { 
-    getStopSearchesForId,
-    getStopSearchTotalsForGender,
-    getStopSearchTotalsForAgeRange,
-    getForceNameById,
-    forceDetails,
-    fetchStopSearchesForId,
     fetchForceDetails,
+    fetchStopSearchesForId,
+    forceDetails,
+    getForceNameById,
+    getStopSearchesForId,
+    getStopSearchTotalsForMetric,
 } = usePoliceApiStore();
 
 const props = defineProps<{
@@ -72,49 +71,36 @@ const stopSearchTotal = computed<NumberOrString>(() => {
     return data?.length ? data.length : '-';
 });
 
-// TODO: Refactor computeds below to remove repetition
 // TODO: New composable to format numbers
-// TODO: New composable to filter an array by key
-
+// TODO: Create constants file for metric types
 const juvenileTotal = computed<NumberOrString>(() => {
-    return getTotalsForAgeRangeMetric(JUVENILE);
+    return getTotalsOutputForMetric('age_range', JUVENILE);
 });
 
 const youngAdultTotal = computed<NumberOrString>(() => {
-    return getTotalsForAgeRangeMetric(YOUNG_ADULT);
+    return getTotalsOutputForMetric('age_range', YOUNG_ADULT);
 });
 
 const adultTotal = computed<NumberOrString>(() => {
-    return getTotalsForAgeRangeMetric(ADULT);
+    return getTotalsOutputForMetric('age_range', ADULT);
 });
 
 const matureTotal = computed<NumberOrString>(() => {
-    return getTotalsForAgeRangeMetric(MATURE);
+    return getTotalsOutputForMetric('age_range', MATURE);
 });
 
-function getTotalsForAgeRangeMetric(rangeType: string): NumberOrString {
-    const data: number = getStopSearchTotalsForAgeRange(props.id, rangeType);
-    return data ? data : '-';
-}
-
 const maleTotal = computed<NumberOrString>(() => {
-    return getTotalsForGenderMetric(MALE);
+    return getTotalsOutputForMetric('gender', MALE);
 });
 
 const femaleTotal = computed<NumberOrString>(() => {
-    return getTotalsForGenderMetric(FEMALE);
+    return getTotalsOutputForMetric('gender', FEMALE);
 });
 
-function getTotalsForGenderMetric(gender: string): NumberOrString {
-    const data: number = getStopSearchTotalsForGender(props.id, gender);
+function getTotalsOutputForMetric(metricType: StopSearchMetric, metricParam: string): NumberOrString {
+    const data: number = getStopSearchTotalsForMetric(props.id, metricType, metricParam);
     return data ? data : '-';
 }
-
-// TODO: Implement this instead of the above getTotals functions
-// function getTotalsForMetric(metricType: string, metricParam: string): NumberOrString {
-//     const data: number = metricType === 'gender' ? getStopSearchTotalsForGender(props.id, metricParam) : getStopSearchTotalsForAgeRange(props.id, metricParam);
-//     return data ? data : '-';
-// }
 
 const isCached = !!forceDetails.find(x => x.id === props.id);
 if (!isCached) {

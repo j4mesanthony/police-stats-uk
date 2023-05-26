@@ -10,3 +10,5 @@ export type Store = {
 }
 
 export type NumberOrString = number | string;
+
+export type StopSearchMetric = 'gender' | 'age_range';
