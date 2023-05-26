@@ -45,61 +45,50 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { StopSearch } from '../interfaces/interfaceLibrary';
-import { NumberOrString } from '../types/typeLibrary';
-import { JUVENILE, YOUNG_ADULT, ADULT, MATURE } from '../constants/ageRanges';
+import { NumberOrString, StopSearchMetric } from '../types/typeLibrary';
+import { JUVENILE, YOUNG_ADULT, ADULT, MATURE } from '../constants/ages';
+import { MALE, FEMALE } from '../constants/genders';
+import { AGE, GENDER } from '../constants/stopSearchMetrics';
 import { usePoliceApiStore } from '../stores/usePoliceApiStore';
 
-const store = usePoliceApiStore();
+const { 
+    fetchForceDetails,
+    fetchStopSearchesForId,
+    forceDetails,
+    getForceNameById,
+    getStopSearchesForId,
+    getStopSearchTotalsForMetric,
+} = usePoliceApiStore();
+
 const props = defineProps<{
     id: string
 }>();
 
-const name = computed<string>(() => (store.getForceNameById(props.id)));
-const stopSearches = computed<StopSearch[]>(() => store.getStopSearchesForId(props.id));
+const name = computed<string>(() => (getForceNameById(props.id)));
+const stopSearches = computed<StopSearch[]>(() => getStopSearchesForId(props.id));
 
 const stopSearchTotal = computed<NumberOrString>(() => {
     const data: StopSearch[] = stopSearches.value;
     return data?.length ? data.length : '-';
 });
 
-// TODO: Refactor computeds below to remove repetition
 // TODO: New composable to format numbers
-// TODO: New composable to filter an array by key
+const juvenileTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(AGE, JUVENILE));
+const youngAdultTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(AGE, YOUNG_ADULT));
+const adultTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(AGE, ADULT));
+const matureTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(AGE, MATURE));
+const maleTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(GENDER, MALE));
+const femaleTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(GENDER, FEMALE));
 
-const juvenileTotal = computed<NumberOrString>(() => {
-    const data = stopSearches.value?.filter((x: StopSearch) => x.age_range === JUVENILE);
-    return data?.length ? data.length : '-';
-});
+function getTotalsOutputForMetric(metricType: StopSearchMetric, metricParam: string): NumberOrString {
+    const data: number = getStopSearchTotalsForMetric(props.id, metricType, metricParam);
+    return data ? data : '-';
+}
 
-const youngAdultTotal = computed<NumberOrString>(() => {
-    const data = stopSearches.value?.filter((x: StopSearch) => x.age_range === YOUNG_ADULT);
-    return data?.length ? data.length : '-';
-});
-
-const adultTotal = computed<NumberOrString>(() => {
-    const data = stopSearches.value?.filter((x: StopSearch) => x.age_range === ADULT);
-    return data?.length ? data.length : '-';
-});
-
-const matureTotal = computed<NumberOrString>(() => {
-    const data = stopSearches.value?.filter((x: StopSearch) => x.age_range === MATURE);
-    return data?.length ? data.length : '-';
-});
-
-const maleTotal = computed<NumberOrString>(() => {
-    const data = stopSearches.value?.filter((x: StopSearch) => x.gender === 'Male');
-    return data?.length ? data.length : '-';
-});
-
-const femaleTotal = computed<NumberOrString>(() => {
-    const data = stopSearches.value?.filter((x: StopSearch) => x.gender === 'Female');
-    return data?.length ? data.length : '-';
-});
-
-const isCached = !!store.forceDetails.find(x => x.id === props.id);
+const isCached = !!forceDetails.find(x => x.id === props.id);
 if (!isCached) {
-    store.fetchForceDetails(props.id);
-    store.fetchStopSearchesForId(props.id);
+    fetchForceDetails(props.id);
+    fetchStopSearchesForId(props.id);
 };
 
 </script>
