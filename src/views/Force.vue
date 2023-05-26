@@ -46,8 +46,9 @@
 import { computed } from 'vue';
 import { StopSearch } from '../interfaces/interfaceLibrary';
 import { NumberOrString, StopSearchMetric } from '../types/typeLibrary';
-import { JUVENILE, YOUNG_ADULT, ADULT, MATURE } from '../constants/ageRanges';
+import { JUVENILE, YOUNG_ADULT, ADULT, MATURE } from '../constants/ages';
 import { MALE, FEMALE } from '../constants/genders';
+import { AGE, GENDER } from '../constants/stopSearchMetrics';
 import { usePoliceApiStore } from '../stores/usePoliceApiStore';
 
 const { 
@@ -72,30 +73,12 @@ const stopSearchTotal = computed<NumberOrString>(() => {
 });
 
 // TODO: New composable to format numbers
-// TODO: Create constants file for metric types
-const juvenileTotal = computed<NumberOrString>(() => {
-    return getTotalsOutputForMetric('age_range', JUVENILE);
-});
-
-const youngAdultTotal = computed<NumberOrString>(() => {
-    return getTotalsOutputForMetric('age_range', YOUNG_ADULT);
-});
-
-const adultTotal = computed<NumberOrString>(() => {
-    return getTotalsOutputForMetric('age_range', ADULT);
-});
-
-const matureTotal = computed<NumberOrString>(() => {
-    return getTotalsOutputForMetric('age_range', MATURE);
-});
-
-const maleTotal = computed<NumberOrString>(() => {
-    return getTotalsOutputForMetric('gender', MALE);
-});
-
-const femaleTotal = computed<NumberOrString>(() => {
-    return getTotalsOutputForMetric('gender', FEMALE);
-});
+const juvenileTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(AGE, JUVENILE));
+const youngAdultTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(AGE, YOUNG_ADULT));
+const adultTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(AGE, ADULT));
+const matureTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(AGE, MATURE));
+const maleTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(GENDER, MALE));
+const femaleTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(GENDER, FEMALE));
 
 function getTotalsOutputForMetric(metricType: StopSearchMetric, metricParam: string): NumberOrString {
     const data: number = getStopSearchTotalsForMetric(props.id, metricType, metricParam);

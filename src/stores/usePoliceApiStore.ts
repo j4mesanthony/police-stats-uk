@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { useFetch } from '../composables/useFetch';
-import { Store } from '../types/typeLibrary';
+import { Store, StopSearchMetric } from '../types/typeLibrary';
 import { Person, ForceDetail, StopSearch } from '../interfaces/interfaceLibrary';
 import { Force } from '../models/force';
 
@@ -31,7 +31,8 @@ export const usePoliceApiStore = defineStore('policeApi', {
         },
 
         getStopSearchTotalsForMetric() {
-            return (id: string, metric: string, metricArg: string): number => this.stopSearches[id]?.filter((x: any) => x[metric] === metricArg).length;
+            return (id: string, metric: StopSearchMetric, metricValue: string): number => 
+            (this.stopSearches[id]?.filter((x: StopSearch) => x[metric as keyof StopSearch] === metricValue).length);
         },
     },
 
