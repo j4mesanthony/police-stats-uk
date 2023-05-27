@@ -8,6 +8,7 @@ export default {
     extend: {},
     minHeight: {
       '100': '100px',
+      '120': '120px',
     }
   },
   plugins: [],

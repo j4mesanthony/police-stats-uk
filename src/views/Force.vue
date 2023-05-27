@@ -4,37 +4,12 @@
     
     <div v-if="name" class="flex flex-row flex-wrap w-full gap-2">
         <DataSummaryPanel label="Total Stop Searches" :data="stopSearchTotal" />
-
-        <FlexPanelItem class="grow basis-80">
-            <p class="mb-1 text-4xl font-bold">{{ juvenileTotal }}</p>
-            <p>{{ JUVENILE }}</p>
-        </FlexPanelItem>
-
-        <FlexPanelItem class="grow basis-80">
-            <p class="mb-1 text-4xl font-bold">{{ youngAdultTotal }}</p>
-            <p>{{ YOUNG_ADULT }}</p>
-        </FlexPanelItem>
-
-        <FlexPanelItem class="grow basis-80">
-            <p class="mb-1 text-4xl font-bold">{{ adultTotal }}</p>
-            <p>{{ ADULT }}</p>
-        </FlexPanelItem>
-
-        <FlexPanelItem class="grow basis-80">
-            <p class="mb-1 text-4xl font-bold">{{ matureTotal }}</p>
-            <p>{{ MATURE }}</p>
-        </FlexPanelItem>
-
-        <FlexPanelItem class="grow basis-80">
-            <p class="mb-1 text-4xl font-bold">{{ maleTotal }}</p>
-            <p>Male</p>
-        </FlexPanelItem>
-
-        <!-- TODO: New component for these summaries (DataSummary.vue?) -->
-        <FlexPanelItem class="grow basis-80">
-            <p class="mb-1 text-4xl font-bold">{{ femaleTotal }}</p>
-            <p>Female</p>
-        </FlexPanelItem>
+        <DataSummaryPanel :label="JUVENILE" :data="juvenileTotal" />
+        <DataSummaryPanel :label="YOUNG_ADULT" :data="youngAdultTotal" />
+        <DataSummaryPanel :label="ADULT" :data="adultTotal" />
+        <DataSummaryPanel :label="MATURE" :data="matureTotal" />
+        <DataSummaryPanel :label="MALE" :data="maleTotal" />
+        <DataSummaryPanel :label="FEMALE" :data="femaleTotal" />
     </div>
 </div>
 </template>
