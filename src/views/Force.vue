@@ -3,10 +3,7 @@
     <h2 class="mb-6 text-3xl font-bold text-slate-50">{{ name }}</h2>
     
     <div v-if="name" class="flex flex-row flex-wrap w-full gap-2">
-        <FlexPanelItem class="grow basis-80">
-            <p class="mb-1 text-4xl font-bold">{{ stopSearchTotal }}</p>
-            <p>Total Stop Searches</p>
-        </FlexPanelItem>
+        <DataSummaryPanel label="Total Stop Searches" :data="stopSearchTotal" />
 
         <FlexPanelItem class="grow basis-80">
             <p class="mb-1 text-4xl font-bold">{{ juvenileTotal }}</p>
@@ -50,6 +47,7 @@ import { JUVENILE, YOUNG_ADULT, ADULT, MATURE } from '../constants/ages';
 import { MALE, FEMALE } from '../constants/genders';
 import { AGE, GENDER } from '../constants/stopSearchMetrics';
 import { usePoliceApiStore } from '../stores/usePoliceApiStore';
+import DataSummaryPanel from '../components/DataSummaryPanel.vue';
 
 const { 
     fetchForceDetails,
