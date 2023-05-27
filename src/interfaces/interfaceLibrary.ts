@@ -73,6 +73,10 @@ export interface UseNav {
     router: Router
 }
 
+export interface UseNumbers {
+    formatLargeNumber: (input: number) => string
+}
+
 export interface UseStringFormatter {
     toTitleCase: (input: string) => string
 }
