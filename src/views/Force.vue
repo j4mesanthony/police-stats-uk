@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { StopSearch } from '../interfaces/interfaceLibrary';
-import { NumberOrString, StopSearchMetric } from '../types/typeLibrary';
+import { StopSearchMetric } from '../types/typeLibrary';
 import { JUVENILE, YOUNG_ADULT, ADULT, MATURE } from '../constants/ages';
 import { MALE, FEMALE } from '../constants/genders';
 import { AGE, GENDER } from '../constants/stopSearchMetrics';
@@ -40,22 +40,21 @@ const props = defineProps<{
 const name = computed<string>(() => (getForceNameById(props.id)));
 const stopSearches = computed<StopSearch[]>(() => getStopSearchesForId(props.id));
 
-const stopSearchTotal = computed<NumberOrString>(() => {
+const stopSearchTotal = computed<number>(() => {
     const data: StopSearch[] = stopSearches.value;
-    return data?.length ? data.length : '-';
+    return data?.length ? data.length : 0;
 });
 
-// TODO: New composable to format numbers
-const juvenileTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(AGE, JUVENILE));
-const youngAdultTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(AGE, YOUNG_ADULT));
-const adultTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(AGE, ADULT));
-const matureTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(AGE, MATURE));
-const maleTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(GENDER, MALE));
-const femaleTotal = computed<NumberOrString>(() => getTotalsOutputForMetric(GENDER, FEMALE));
+const juvenileTotal = computed<number>(() => getTotalsOutputForMetric(AGE, JUVENILE));
+const youngAdultTotal = computed<number>(() => getTotalsOutputForMetric(AGE, YOUNG_ADULT));
+const adultTotal = computed<number>(() => getTotalsOutputForMetric(AGE, ADULT));
+const matureTotal = computed<number>(() => getTotalsOutputForMetric(AGE, MATURE));
+const maleTotal = computed<number>(() => getTotalsOutputForMetric(GENDER, MALE));
+const femaleTotal = computed<number>(() => getTotalsOutputForMetric(GENDER, FEMALE));
 
-function getTotalsOutputForMetric(metricType: StopSearchMetric, metricParam: string): NumberOrString {
+function getTotalsOutputForMetric(metricType: StopSearchMetric, metricParam: string): number {
     const data: number = getStopSearchTotalsForMetric(props.id, metricType, metricParam);
-    return data ? data : '-';
+    return data ? data : 0;
 }
 
 const isCached = !!forceDetails.find(x => x.id === props.id);

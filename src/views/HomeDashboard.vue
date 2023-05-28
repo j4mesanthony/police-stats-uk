@@ -19,8 +19,8 @@ onMounted(() => {
     
     <div class="flex flex-row flex-wrap gap-2">
       <DataSummaryPanel label="Active Forces" :data="forcesCount" :path="ACTIVE_FORCES" />
-      <DataSummaryPanel label="Crimes" data="-" />
-      <DataSummaryPanel label="Investigations" data="-" />
+      <DataSummaryPanel label="Crimes" :data="0" />
+      <DataSummaryPanel label="Investigations" :data="0" />
     </div>
   </div>
 </template>
