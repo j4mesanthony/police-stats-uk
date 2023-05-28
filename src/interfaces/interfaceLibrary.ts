@@ -7,35 +7,35 @@ export interface Force {
 
 export interface ForceDetail {
     description: string;
-    url: string;
     engagement_methods: EngagementMethod[];
-    telephone: string;
     id: string;
     name: string;
+    telephone: string;
+    url: string;
 }
 
 export interface StopSearch {
     age_range: string;
-    self_defined_ethnicity: string;
-    outcome_linked_to_object_of_search: null;
     datetime: string;
-    removal_of_more_than_outer_clothing: boolean;
-    operation: boolean;
-    officer_defined_ethnicity: string;
-    object_of_search: string;
-    involved_person: boolean;
     gender: string;
+    involved_person: boolean;
     legislation: string;
     location: Location;
-    outcome: boolean;
-    type: string;
+    object_of_search: string;
+    officer_defined_ethnicity: string;
     operation_name: null;
+    operation: boolean;
+    outcome_linked_to_object_of_search: null;
+    outcome: boolean;
+    removal_of_more_than_outer_clothing: boolean;
+    self_defined_ethnicity: string;
+    type: string;
 }
 
 export interface Location {
     latitude:  string;
-    street:    Street;
     longitude: string;
+    street:    Street;
 }
 
 export interface Street {
@@ -43,11 +43,17 @@ export interface Street {
     name: string;
 }
 
+export interface Store {
+    allForces: Force[];
+    forceDetails: ForceDetail[];
+    selectedForceSeniorOfficers: Person[];
+    stopSearches: any;
+}
 
 export interface EngagementMethod {
-    url: string;
     description: string;
     title: string;
+    url: string;
 }
 
 export interface Person {
@@ -57,10 +63,10 @@ export interface Person {
 }
 
 export interface Route {
-    name: string,
-    path: string,
-    isActive: boolean,
-    children?: Array<Route>,
+    name: string;
+    path: string;
+    isActive: boolean;
+    children?: Array<Route>;
 }
 
 export interface UseFetch {

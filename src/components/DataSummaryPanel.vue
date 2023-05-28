@@ -3,7 +3,6 @@ import { computed } from 'vue';
 import { useNav } from '../composables/useNav';
 const { goTo } = useNav();
 
-// TODO: // Convert props to use static typing
 const props = defineProps({
     data: {
         type: [Number, String],
