@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useNav } from '../composables/useNav';
-import { useNumbers } from '../composables/useNumbers';
+import { useNumberFormatter } from '../composables/useNumberFormatter';
 
 const { goTo } = useNav();
-const { formatNumber } = useNumbers();
+const { formatNumber } = useNumberFormatter();
 
 const props = defineProps({
     data: {
