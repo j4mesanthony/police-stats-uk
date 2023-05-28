@@ -80,7 +80,7 @@ export interface UseNav {
 }
 
 export interface UseNumbers {
-    formatLargeNumber: (input: number) => string
+    formatNumber: (input: number) => string
 }
 
 export interface UseStringFormatter {

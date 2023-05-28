@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useNav } from '../composables/useNav';
+import { useNumbers } from '../composables/useNumbers';
+
 const { goTo } = useNav();
+const { formatNumber } = useNumbers();
 
 const props = defineProps({
     data: {
-        type: [Number, String],
+        type: Number,
         required: true
     },
 
@@ -21,16 +24,17 @@ const props = defineProps({
 });
 
 const hasPath = computed(() => !!props.path);
+const formattedData = computed(() => formatNumber(props.data));
 </script>
 
 <template>
     <FlexPanelItem class="grow basis-80">
         <p class="mb-1 text-4xl font-bold">
             <template v-if="hasPath">
-                <LinkItem @click="goTo(props.path)" :underline="false">{{ props.data }}</LinkItem>
+                <LinkItem @click="goTo(props.path)" :underline="false">{{ formattedData }}</LinkItem>
             </template>
             <template v-else>
-                {{ props.data }}
+                {{ formattedData }}
             </template>
         </p>
         <p>{{ props.label }}</p>
