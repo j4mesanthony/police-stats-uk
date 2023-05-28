@@ -46,6 +46,9 @@ export default createRouter({
                     path: ':id',
                     component: VIEWS.Force,
                     props: true,
+                    meta: {
+                        hide: true
+                    }
                 },
             ]
         },
