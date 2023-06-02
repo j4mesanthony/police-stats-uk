@@ -1,17 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import * as ROUTENAMES from './constants/routes';
+import * as ROUTE_NAMES from './constants/routes';
+import * as VIEWS from './views/index.views';
 
 const ContentWrapper = () => import('./components/ContentWrapper.vue');
-const HomeDashboard = () => import('./views/HomeDashboard.vue');
-const ForceList = () => import('./views/ForceList.vue');
-const Force = () => import('./views/Force.vue');
-const SettingsArea = () => import('./views/SettingsArea.vue');
 
 export default createRouter({
     history: createWebHistory(),
     routes: [
         {
-            name: ROUTENAMES.HOME,
+            name: ROUTE_NAMES.HOME,
             path: '/home',
             component: ContentWrapper,
             meta: {
@@ -19,20 +16,20 @@ export default createRouter({
             },
             children: [
                 {
-                    name: ROUTENAMES.DASHBOARD,
+                    name: ROUTE_NAMES.DASHBOARD,
                     path: '',
-                    component: HomeDashboard
+                    component: VIEWS.HomeDashboard
                 },
                 {
-                    name: ROUTENAMES.SETTINGS,
+                    name: ROUTE_NAMES.SETTINGS,
                     path: 'settings',
-                    component: SettingsArea
+                    component: VIEWS.SettingsArea
                 },
             ]
         },
 
         {
-            name: ROUTENAMES.FORCES,
+            name: ROUTE_NAMES.FORCES,
             path: '/forces',
             component: ContentWrapper,
             meta: {
@@ -40,15 +37,18 @@ export default createRouter({
             },
             children: [
                 {
-                    name: ROUTENAMES.ACTIVE_FORCES,
+                    name: ROUTE_NAMES.ACTIVE_FORCES,
                     path: '',
-                    component: ForceList
+                    component: VIEWS.ForceList
                 },
                 {
-                    name: ROUTENAMES.FORCE,
+                    name: ROUTE_NAMES.FORCE,
                     path: ':id',
-                    component: Force,
+                    component: VIEWS.Force,
                     props: true,
+                    meta: {
+                        hide: true
+                    }
                 },
             ]
         },

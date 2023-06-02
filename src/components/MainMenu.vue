@@ -14,9 +14,10 @@ const routes = computed(() => recursiveTitleCaseRouteNames(availableRoutes));
 
 function recursiveTitleCaseRouteNames(original: Array<RouteRecord>): Array<Route> {
     let remapped: Array<Route> = original.map((x) => {
+        const hide = x.meta?.hide ? true : false;
         let children = [];
         if (x.children) children.push(...recursiveTitleCaseRouteNames(x.children as Array<RouteRecord>));
-        return new Route(toTitleCase(x.name as string), x.path, x.name === currentRoute.value, children);
+        return new Route(toTitleCase(x.name as string), x.path, x.name === currentRoute.value, children, hide);
     });
     
     return remapped;
@@ -24,11 +25,13 @@ function recursiveTitleCaseRouteNames(original: Array<RouteRecord>): Array<Route
 </script>
 
 <template>
-    <div class="flex flex-row md:flex-col md:basis-1/5 scroll-smooth overflow-scroll">
+    <div class="flex flex-row overflow-scroll md:flex-col md:basis-1/5 scroll-smooth">
         <MenuButtonGroup v-for="group in routes" :title="group.name">
-            <MenuButton v-for="child in group.children" :isActive="child.isActive" @click="goTo(child.name)" small>
-                {{ child.name }}
-            </MenuButton>
+            <template v-for="child in group.children">
+                <MenuButton v-if="!child.hideFromMenu" :isActive="child.isActive" @click="goTo(child.name)" small>
+                    {{ child.name }}
+                </MenuButton>
+            </template>
         </MenuButtonGroup>
     </div>
 </template>
