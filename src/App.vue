@@ -3,6 +3,7 @@ import MainMenu from './components/MainMenu.vue';
 </script>
 
 <template>
+  <Loader />
   <div class="h-screen flex flex-col pt-5 mx-auto overflow-scroll max-w-[1400px] md:flex-row">
     <MainMenu />
 

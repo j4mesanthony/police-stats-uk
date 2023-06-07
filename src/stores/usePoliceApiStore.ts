@@ -9,8 +9,9 @@ const { get } = useFetch();
 export const usePoliceApiStore = defineStore('policeApi', {
     state: (): Store => ({
         allForces: [],
-        selectedForceSeniorOfficers: [],
         forceDetails: [],
+        isLoading: false,
+        selectedForceSeniorOfficers: [],
         stopSearches: {}
     }),
 
@@ -38,32 +39,45 @@ export const usePoliceApiStore = defineStore('policeApi', {
 
     actions: {
         fetchForces() {
+            this.isLoading = true;
+            
             return get('forces')
                 .then((res: Array<Force>) => {
                     const models = res.map(x => new Force(x.id, x.name));
                     this.allForces.push(...models);
-                });
+                })
+                .finally(() => this.isLoading = false);
         },
 
         fetchForceDetails(forceId: string): Promise<ForceDetail> {
+            // this.isLoading = true;
+
             return get(`forces/${forceId}`)
                 .then((res: ForceDetail) => {
                     this.forceDetails.push(res);
-                });
+                })
+                // .finally(() => this.isLoading = false);
         },
 
         fetchStopSearchesForId(forceId: string): Promise<StopSearch[]> {
+            // TODO: Combine this call and fetchForceDetails into a chained promise then set isLoading to false
+            this.isLoading = true;
+
             return get(`stops-force?force=${forceId}`)
                 .then((res: StopSearch[]) => {
                     this.stopSearches[forceId] = res;
-                });
+                })
+                .finally(() => this.isLoading = false);
         },
 
         fetchSeniorOfficers(force: string) {
+            // this.isLoading = true;
+
             return get(`forces/${force}/people`)
                 .then((res: Array<Person>) => {
                     this.selectedForceSeniorOfficers.push(...res);
-                });
+                })
+                // .finally(() => this.isLoading = false);
         },
 
         
