@@ -7,17 +7,17 @@ const showLoader = computed(() => store.isLoading);
 </script>
 
 <template>
-    <div v-show="showLoader" class="loader absolute w-full h-[1px] bg-slate-800 opacity-0"></div>
+    <div v-show="showLoader" class="loader absolute h-[3px] w-[100%] bg-slate-800 opacity-0"></div>
 </template>
 
 <style scoped>
 .loader{
     background: #00D4FF;
-    animation: load 2s 0.5s infinite linear;
+    animation: load 1.5s 0.5s infinite linear;
 }
 
 @keyframes load {
-    0%, 
+    0%,
     100% {
         opacity: 0;
     }
