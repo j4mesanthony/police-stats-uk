@@ -16,10 +16,7 @@ function goHome() {
 <template>
     <div class="fixed z-10 top-0 border-b-[1px] flex border-slate-600 flex-row w-full p-5 md:hidden shadow-lg bg-slate-900">
         <div class="flex">
-            <LinkItem small :underline="false" @click="openMenu">
-                <!-- TODO: Add icon as an option to LinkItem -->
-                <span class="relative material-symbols-outlined top-[4px] mr-1" style="font-size: 18px;">menu</span>Menu
-            </LinkItem>
+            <LinkItem icon="menu" small :underline="false" @click="openMenu">Menu</LinkItem>
         </div>
 
         <div class="flex ml-auto">
