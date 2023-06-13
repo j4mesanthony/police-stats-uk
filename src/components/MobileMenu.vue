@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onBeforeUnmount } from 'vue';
 import { reactive } from 'vue';
 import { HOME } from '../constants/routes';
 import { useNav } from '../composables/useNav';
@@ -18,6 +19,10 @@ function toggleMenu() {
 function goHome() {
     goTo(HOME);
 }
+
+onBeforeUnmount(() => {
+    Data.isMenuOn = false
+});
 </script>
 
 <template>
