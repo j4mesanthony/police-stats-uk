@@ -50,19 +50,16 @@ export const usePoliceApiStore = defineStore('policeApi', {
         },
 
         fetchForceDetails(forceId: string): Promise<ForceDetail> {
-            // this.isLoading = true;
+            this.isLoading = true;
 
             return get(`forces/${forceId}`)
                 .then((res: ForceDetail) => {
                     this.forceDetails.push(res);
+                    this.fetchStopSearchesForId(forceId);
                 })
-                // .finally(() => this.isLoading = false);
         },
 
         fetchStopSearchesForId(forceId: string): Promise<StopSearch[]> {
-            // TODO: Combine this call and fetchForceDetails into a chained promise then set isLoading to false
-            this.isLoading = true;
-
             return get(`stops-force?force=${forceId}`)
                 .then((res: StopSearch[]) => {
                     this.stopSearches[forceId] = res;
