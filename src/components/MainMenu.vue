@@ -22,10 +22,18 @@ function recursiveTitleCaseRouteNames(original: Array<RouteRecord>): Array<Route
     
     return remapped;
 }
+
+function openMenu() {
+    console.warn('openMenu!');
+}
+
+function goHome() {
+    console.warn('Home');
+}
 </script>
 
 <template>
-    <div class="fixed bottom-0 flex flex-row w-full overflow-scroll bg-slate-700 md:bg-transparent md:relative md:flex-col md:basis-1/5 scroll-smooth">
+    <div class="fixed overflow-scroll left-[-100px] md:left-0 transition-[left] opacity-0 md:opacity-100 md:relative md:flex md:flex-col grow md:basis-1/5">
         <MenuButtonGroup v-for="group in routes" :title="group.name">
             <template v-for="child in group.children">
                 <MenuButton v-if="!child.hideFromMenu" :isActive="child.isActive" @click="goTo(child.name)" small>
@@ -33,5 +41,17 @@ function recursiveTitleCaseRouteNames(original: Array<RouteRecord>): Array<Route
                 </MenuButton>
             </template>
         </MenuButtonGroup>
+    </div>
+
+    <!-- TODO: MobileMenu -->
+    <div class="fixed z-10 top-0 border-b-[1px] border-slate-600 flex w-full p-5 md:hidden shadow-lg bg-slate-900">
+        <LinkItem small :underline="false" @click="openMenu">
+            <!-- TODO: Add icon as an option to LinkItem -->
+            <span class="relative material-symbols-outlined top-[4px] mr-1" style="font-size: 18px;">menu</span>Menu
+        </LinkItem>
+
+        <!-- <LinkItem small :underline="false" @click="goHome">
+            <span class="material-symbols-outlined text-slate-50">home</span>
+        </LinkItem> -->
     </div>
 </template>
