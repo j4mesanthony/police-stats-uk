@@ -20,11 +20,6 @@ export default createRouter({
                     path: '',
                     component: VIEWS.HomeDashboard
                 },
-                {
-                    name: ROUTE_NAMES.SETTINGS,
-                    path: 'settings',
-                    component: VIEWS.SettingsArea
-                },
             ]
         },
 
