@@ -11,6 +11,7 @@ export default createRouter({
             name: ROUTE_NAMES.HOME,
             path: '/home',
             component: ContentWrapper,
+            redirect: '/',
             meta: {
                 isParent: true
             },
