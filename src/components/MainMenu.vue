@@ -27,9 +27,9 @@ function openMenu() {
     console.warn('openMenu!');
 }
 
-function goHome() {
-    console.warn('Home');
-}
+// function goHome() {
+//     console.warn('Home');
+// }
 </script>
 
 <template>
