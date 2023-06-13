@@ -68,6 +68,7 @@ export interface Route {
     path: string;
     isActive: boolean;
     children?: Array<Route>;
+    hideFromMenu: boolean;
 }
 
 export interface UseFetch {

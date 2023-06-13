@@ -1,35 +1,25 @@
 <script setup lang="ts">
 import MenuButton from './MenuButton.vue';
 import MenuButtonGroup from './MenuButtonGroup.vue';
+import MobileMenu from './MobileMenu.vue';
 import { computed } from 'vue';
 import { RouteRecord } from 'vue-router';
 import { useNav } from '../composables/useNav';
 import { useStringFormatter } from '../composables/useStringFormatter';
 import { Route } from '../models/route';
-import { HOME } from '../constants/routes';
 
 const { toTitleCase } = useStringFormatter();
 const { availableRoutes, goTo, router } = useNav();
 const currentRoute = computed(() => router.currentRoute.value.name);
 const routes = computed(() => recursiveTitleCaseRouteNames(availableRoutes));
 
-function recursiveTitleCaseRouteNames(original: Array<RouteRecord>): Array<Route> {
-    let remapped: Array<Route> = original.map((x) => {
+function recursiveTitleCaseRouteNames(routes: Array<RouteRecord>): Array<Route> {
+    return routes.map((x) => {
         const hide = x.meta?.hide ? true : false;
         let children = [];
         if (x.children) children.push(...recursiveTitleCaseRouteNames(x.children as Array<RouteRecord>));
         return new Route(toTitleCase(x.name as string), x.path, x.name === currentRoute.value, children, hide);
     });
-    
-    return remapped;
-}
-
-function openMenu() {
-    console.warn('openMenu!');
-}
-
-function goHome() {
-    goTo(HOME)
 }
 </script>
 
@@ -44,19 +34,5 @@ function goHome() {
         </MenuButtonGroup>
     </div>
 
-    <!-- TODO: MobileMenu -->
-    <div class="fixed z-10 top-0 border-b-[1px] flex border-slate-600 flex-row w-full p-5 md:hidden shadow-lg bg-slate-900">
-        <div class="flex">
-            <LinkItem small :underline="false" @click="openMenu">
-                <!-- TODO: Add icon as an option to LinkItem -->
-                <span class="relative material-symbols-outlined top-[4px] mr-1" style="font-size: 18px;">menu</span>Menu
-            </LinkItem>
-        </div>
-
-        <div class="flex ml-auto">
-            <LinkItem small :underline="false" @click="goHome">
-                <span class="material-symbols-outlined text-slate-50">home</span>
-            </LinkItem>
-        </div>
-    </div>
+    <MobileMenu />
 </template>
