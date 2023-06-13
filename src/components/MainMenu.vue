@@ -25,7 +25,7 @@ function recursiveTitleCaseRouteNames(original: Array<RouteRecord>): Array<Route
 </script>
 
 <template>
-    <div class="flex flex-row overflow-scroll md:flex-col md:basis-1/5 scroll-smooth">
+    <div class="fixed bottom-0 flex flex-row w-full overflow-scroll bg-slate-700 md:bg-transparent md:relative md:flex-col md:basis-1/5 scroll-smooth">
         <MenuButtonGroup v-for="group in routes" :title="group.name">
             <template v-for="child in group.children">
                 <MenuButton v-if="!child.hideFromMenu" :isActive="child.isActive" @click="goTo(child.name)" small>
