@@ -8,7 +8,7 @@ export function useWindowSize(): UseWindowSize {
     onMounted(() => setIsMobile());
     useEventListener('resize', setIsMobile);
 
-    function setIsMobile() {
+    function setIsMobile(): void {
         const width = window.innerWidth;
         isMobile.value = width < 768;
     }

@@ -1,11 +1,11 @@
 import { onMounted, onBeforeUnmount } from "vue";
 
-export function useEventListener(type: string, method: any): void {
+export function useEventListener(type: string, method: any, element: any = window): void {
     onMounted(() => {
-        window.addEventListener(type, method);
+        element.addEventListener(type, method);
     });
 
     onBeforeUnmount(() => {
-        window.removeEventListener(type, method);
+        element.removeEventListener(type, method);
     })
 }
