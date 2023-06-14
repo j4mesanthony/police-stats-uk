@@ -1,4 +1,5 @@
 import { Router, RouteRecord } from 'vue-router';
+import type { Ref } from 'vue';
 
 export interface Force {
     id: string;
@@ -76,15 +77,24 @@ export interface UseFetch {
 }
 
 export interface UseNav {
-    availableRoutes: Array<RouteRecord>
-    goTo: (path: string | { name: string, params: any }) => void,
-    router: Router
+    availableRoutes: Array<RouteRecord>;
+    goTo: (path: string | { name: string, params: any }) => void;
+    router: Router;
 }
 
 export interface UseNumbers {
-    formatNumber: (input: number) => string
+    formatNumber: (input: number) => string;
+}
+
+export interface UseScrollPosition {
+    xPos: Ref<number>;
+    yPos: Ref<number>;
 }
 
 export interface UseStringFormatter {
-    toTitleCase: (input: string) => string
+    toTitleCase: (input: string) => string;
+}
+
+export interface UseWindowSize {
+    isMobile: Ref<boolean>;
 }

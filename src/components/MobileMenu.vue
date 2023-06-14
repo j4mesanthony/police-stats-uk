@@ -34,14 +34,16 @@ onBeforeUnmount(() => {
     <Teleport to="body">
         <Transition>
             <ScreenOverlay :isOn="Data.isMenuOn">
-                <div class="pt-20 pl-5 pr-5">
-                    <MenuItems @navigate="toggleMenu" />
+                <div class="h-full opacity-95 bg-slate-950 w-fit">
+                    <div class="pt-20 pl-5 pr-5">
+                        <MenuItems @navigate="toggleMenu" />
+                    </div>
                 </div>
             </ScreenOverlay>
         </Transition>
     </Teleport>
 
-    <div class="fixed z-10 top-0 border-b-[1px] flex border-slate-600 flex-row w-full p-5 md:hidden shadow-lg bg-slate-900">
+    <div class="fixed z-[60] top-0 border-b-[1px] flex border-slate-600 flex-row w-full p-5 md:hidden shadow-lg bg-slate-900">
         <div class="flex">
             <LinkItem icon="menu" iconSize="18px" small :underline="false" @click="toggleMenu">Menu</LinkItem>
         </div>

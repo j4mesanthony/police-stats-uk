@@ -1,19 +1,3 @@
-<template>
-    <div>
-    <h2 class="mb-6 text-3xl font-bold text-slate-50">{{ name }}</h2>
-    
-    <div v-if="name" class="flex flex-row flex-wrap w-full gap-2">
-        <DataSummaryPanel label="Total Stop Searches" :data="stopSearchTotal" />
-        <DataSummaryPanel :label="JUVENILE" :data="juvenileTotal" />
-        <DataSummaryPanel :label="YOUNG_ADULT" :data="youngAdultTotal" />
-        <DataSummaryPanel :label="ADULT" :data="adultTotal" />
-        <DataSummaryPanel :label="MATURE" :data="matureTotal" />
-        <DataSummaryPanel :label="MALE" :data="maleTotal" />
-        <DataSummaryPanel :label="FEMALE" :data="femaleTotal" />
-    </div>
-</div>
-</template>
-
 <script setup lang="ts">
 import { computed } from 'vue';
 import { StopSearch } from '../interfaces/interfaceLibrary';
@@ -61,5 +45,20 @@ const isCached = !!forceDetails.find(x => x.id === props.id);
 if (!isCached) {
     fetchForceDetails(props.id);
 };
-
 </script>
+
+<template>
+    <div>
+        <StickyHeading>{{ name}}</StickyHeading>
+    
+        <div v-if="name" class="flex flex-row flex-wrap w-full gap-2">
+            <DataSummaryPanel label="Total Stop Searches" :data="stopSearchTotal" />
+            <DataSummaryPanel :label="JUVENILE" :data="juvenileTotal" />
+            <DataSummaryPanel :label="YOUNG_ADULT" :data="youngAdultTotal" />
+            <DataSummaryPanel :label="ADULT" :data="adultTotal" />
+            <DataSummaryPanel :label="MATURE" :data="matureTotal" />
+            <DataSummaryPanel :label="MALE" :data="maleTotal" />
+            <DataSummaryPanel :label="FEMALE" :data="femaleTotal" />
+        </div>
+    </div>
+</template>

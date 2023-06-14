@@ -15,7 +15,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <h2 class="mb-6 text-3xl font-bold text-slate-50">Dashboard</h2>
+    <StickyHeading>Dashboard</StickyHeading>
     
     <div class="flex flex-row flex-wrap gap-2">
       <DataSummaryPanel label="Active Forces" :data="forcesCount" :path="ACTIVE_FORCES" />
