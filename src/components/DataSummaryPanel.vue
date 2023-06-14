@@ -3,8 +3,7 @@ import { computed } from 'vue';
 import { useNav } from '../composables/useNav';
 import { useNumberFormatter } from '../composables/useNumberFormatter';
 
-const { goTo } = useNav();
-const { formatNumber } = useNumberFormatter();
+const emits = defineEmits(['click']);
 
 const props = defineProps({
     data: {
@@ -23,12 +22,23 @@ const props = defineProps({
     }
 });
 
+const { goTo } = useNav();
+const { formatNumber } = useNumberFormatter();
 const hasPath = computed(() => !!props.path);
 const formattedData = computed(() => formatNumber(props.data));
+
+function onClick(path: string) {
+    if (path) {
+        goTo(path);
+        return;
+    }
+
+    emits('click')
+}
 </script>
 
 <template>
-    <FlexPanelItem class="cursor-pointer grow basis-80" @click="goTo(props.path)">
+    <FlexPanelItem class="cursor-pointer grow basis-80" @click="onClick(props.path)">
         <p class="mb-1 text-4xl font-bold">
             <template v-if="hasPath">
                 <LinkItem :underline="false">{{ formattedData }}</LinkItem>
