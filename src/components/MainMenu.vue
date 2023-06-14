@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { onMounted, reactive } from 'vue';
+import { onMounted } from 'vue';
+import { reactive } from 'vue';
+import { useEventListener } from '../composables/useEventListener';
 import MenuItems from './MenuItems.vue';
 import MobileMenu from './MobileMenu.vue';
 
-// Move this to a composable - useResize(toggleMobileMenu)?
-onMounted(() => { // 768
-    window.addEventListener('resize', toggleMobileMenu);
-});
+onMounted(() => toggleMobileMenu());
 
 const Data = reactive({
     isMobileMenuOn: false
 });
+
+useEventListener('resize', toggleMobileMenu);
 
 function toggleMobileMenu() {
     const width = window.innerWidth;

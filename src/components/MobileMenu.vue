@@ -17,11 +17,16 @@ function toggleMenu() {
 }
 
 function goHome() {
+    resetMenu();
     goTo(HOME);
 }
 
+function resetMenu() {
+    Data.isMenuOn = false;
+}
+
 onBeforeUnmount(() => {
-    Data.isMenuOn = false
+    resetMenu();
 });
 </script>
 
@@ -38,10 +43,10 @@ onBeforeUnmount(() => {
 
     <div class="fixed z-10 top-0 border-b-[1px] flex border-slate-600 flex-row w-full p-5 md:hidden shadow-lg bg-slate-900">
         <div class="flex">
-            <LinkItem icon="menu" small :underline="false" @click="toggleMenu">Menu</LinkItem>
+            <LinkItem icon="menu" iconSize="18px" small :underline="false" @click="toggleMenu">Menu</LinkItem>
         </div>
 
-        <div class="flex ml-auto">
+        <div class="flex mt-[-3px] ml-auto">
             <LinkItem icon="home" small :underline="false" @click="goHome" />
         </div>
     </div>
