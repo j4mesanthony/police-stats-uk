@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { usePoliceApiStore } from '../stores/usePoliceApiStore';
+import { useWindowSize } from '../composables/useWindowSize';
 
+const { isMobile } = useWindowSize();
 const store = usePoliceApiStore();
 const showLoader = computed(() => store.isLoading);
 </script>
 
 <template>
-    <div v-show="showLoader" class="loader fixed z-50 h-[3px] w-[100%] bg-slate-800 opacity-0"></div>
+    <div v-show="showLoader" :class="{ 'top-[67px]': isMobile }" class="loader fixed z-[70] h-[3px] w-[100%] bg-slate-800 opacity-0"></div>
 </template>
 
 <style scoped>
