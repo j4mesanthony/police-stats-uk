@@ -6,11 +6,15 @@ const ContentWrapper = () => import('./components/ContentWrapper.vue');
 
 export default createRouter({
     history: createWebHistory(),
+    scrollBehavior() {
+        return { top: 0 }
+    },
     routes: [
         {
             name: ROUTE_NAMES.HOME,
             path: '/home',
             component: ContentWrapper,
+            redirect: '/',
             meta: {
                 isParent: true
             },
@@ -19,11 +23,6 @@ export default createRouter({
                     name: ROUTE_NAMES.DASHBOARD,
                     path: '',
                     component: VIEWS.HomeDashboard
-                },
-                {
-                    name: ROUTE_NAMES.SETTINGS,
-                    path: 'settings',
-                    component: VIEWS.SettingsArea
                 },
             ]
         },

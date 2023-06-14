@@ -46,6 +46,7 @@ export interface Street {
 export interface Store {
     allForces: Force[];
     forceDetails: ForceDetail[];
+    isLoading: boolean;
     selectedForceSeniorOfficers: Person[];
     stopSearches: any;
 }
@@ -67,6 +68,7 @@ export interface Route {
     path: string;
     isActive: boolean;
     children?: Array<Route>;
+    hideFromMenu: boolean;
 }
 
 export interface UseFetch {

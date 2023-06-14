@@ -18,19 +18,20 @@ onMounted(() => {
     <div>
         <h2 class="mb-6 text-3xl font-bold text-slate-50">Available Forces by Region</h2>
         
-        <div class="flex flex-row flex-wrap">
+        <!-- TODO: Implement VirtualScroller -->
+
             <!-- <FlexPanelItem> -->
-                <table class="w-full text-sm border-collapse table-auto">
+                <table class="text-sm border-collapse table-auto md:w-full">
                     <tr>
-                        <th class="p-4 pt-0 pb-3 pl-8 font-medium text-left border-b dark:border-slate-600 text-slate-400 dark:text-slate-200">Name</th>
-                        <th class="p-4 pt-0 pb-3 pl-8 font-medium text-center border-b dark:border-slate-600 text-slate-400 dark:text-slate-200">Stop Searches</th>
-                        <th class="p-4 pt-0 pb-3 pl-8 font-medium text-center border-b dark:border-slate-600 text-slate-400 dark:text-slate-200">Action</th>
+                        <th class="p-4 pt-0 pb-3 font-medium text-left border-b dark:border-slate-600 text-slate-400 dark:text-slate-200">Name</th>
+                        <th class="p-4 pt-0 pb-3 font-medium text-center border-b dark:border-slate-600 text-slate-400 dark:text-slate-200">Stop Searches</th>
+                        <th class="p-4 pt-0 pb-3 font-medium text-center border-b dark:border-slate-600 text-slate-400 dark:text-slate-200">Action</th>
                     </tr>
                     <tbody>
                         <tr v-for="force in allForces" :key="force.id" class="group">
-                            <td class="p-4 pl-8 text-left border-b group-hover:bg-slate-900 border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">{{ force.name }}</td>
-                            <td class="p-4 pl-8 text-center border-b group-hover:bg-slate-900 border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">-</td>
-                            <td class="p-4 pl-8 text-center border-b group-hover:bg-slate-900 border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">
+                            <td class="p-4 text-left border-b group-hover:bg-slate-900 border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">{{ force.name }}</td>
+                            <td class="p-4 text-center border-b group-hover:bg-slate-900 border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">-</td>
+                            <td class="p-4 text-center border-b group-hover:bg-slate-900 border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">
                                 <LinkItem :underline="false" @click="goTo({ name: FORCE, params: { id: force.id } })">View</LinkItem>
                             </td>
                         </tr>
@@ -39,6 +40,6 @@ onMounted(() => {
 
                 <!-- <small>{{ allForces }}</small> -->
             <!-- </FlexPanelItem> -->
-        </div>
+
     </div>
 </template>

@@ -26,7 +26,6 @@ import DataSummaryPanel from '../components/DataSummaryPanel.vue';
 
 const { 
     fetchForceDetails,
-    fetchStopSearchesForId,
     forceDetails,
     getForceNameById,
     getStopSearchesForId,
@@ -57,10 +56,10 @@ function getTotalsOutputForMetric(metricType: StopSearchMetric, metricParam: str
     return data ? data : 0;
 }
 
+// TODO: Refactor in store to getOrFetch data
 const isCached = !!forceDetails.find(x => x.id === props.id);
 if (!isCached) {
     fetchForceDetails(props.id);
-    fetchStopSearchesForId(props.id);
 };
 
 </script>

@@ -1,37 +1,28 @@
 <script setup lang="ts">
-import MenuButton from './MenuButton.vue';
-import MenuButtonGroup from './MenuButtonGroup.vue';
-import { computed } from 'vue';
-import { RouteRecord } from 'vue-router';
-import { useNav } from '../composables/useNav';
-import { useStringFormatter } from '../composables/useStringFormatter';
-import { Route } from '../models/route';
+import { onMounted } from 'vue';
+import { reactive } from 'vue';
+import { useEventListener } from '../composables/useEventListener';
+import MenuItems from './MenuItems.vue';
+import MobileMenu from './MobileMenu.vue';
 
-const { toTitleCase } = useStringFormatter();
-const { availableRoutes, goTo, router } = useNav();
-const currentRoute = computed(() => router.currentRoute.value.name);
-const routes = computed(() => recursiveTitleCaseRouteNames(availableRoutes));
+onMounted(() => toggleMobileMenu());
 
-function recursiveTitleCaseRouteNames(original: Array<RouteRecord>): Array<Route> {
-    let remapped: Array<Route> = original.map((x) => {
-        const hide = x.meta?.hide ? true : false;
-        let children = [];
-        if (x.children) children.push(...recursiveTitleCaseRouteNames(x.children as Array<RouteRecord>));
-        return new Route(toTitleCase(x.name as string), x.path, x.name === currentRoute.value, children, hide);
-    });
-    
-    return remapped;
+const Data = reactive({
+    isMobileMenuOn: false
+});
+
+useEventListener('resize', toggleMobileMenu);
+
+function toggleMobileMenu() {
+    const width = window.innerWidth;
+    Data.isMobileMenuOn = width < 768;
 }
 </script>
 
 <template>
-    <div class="flex flex-row overflow-scroll md:flex-col md:basis-1/5 scroll-smooth">
-        <MenuButtonGroup v-for="group in routes" :title="group.name">
-            <template v-for="child in group.children">
-                <MenuButton v-if="!child.hideFromMenu" :isActive="child.isActive" @click="goTo(child.name)" small>
-                    {{ child.name }}
-                </MenuButton>
-            </template>
-        </MenuButtonGroup>
+    <div class="fixed left-[-100px] md:left-0 transition-[left] opacity-0 md:opacity-100 md:relative md:flex md:flex-col grow md:basis-1/5">
+        <MenuItems />
     </div>
+
+    <MobileMenu v-if="Data.isMobileMenuOn" />
 </template>
