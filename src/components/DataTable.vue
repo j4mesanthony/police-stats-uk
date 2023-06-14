@@ -36,8 +36,8 @@ const { isMobile } = useWindowSize();
         :key-field="props.key"
         v-slot="{ item }">
         
-        <div :class="{ 'hover:bg-cyan-500 hover:text-slate-50': !isMobile }" 
-              class="p-4 pl-3 pr-3 text-sm text-left transition-all duration-300 border-b cursor-pointer dark:border-slate-700 dark:text-slate-400"
+        <div :class="{ 'hover:text-slate-50 hover:border-slate-50 origin-bottom': !isMobile, 'hover:scale-[1.02]' : !isMobile && props.isRowsClickable }" 
+              class="p-4 pl-3 pr-3 text-sm text-left transition-all duration-200 border-b cursor-pointer dark:border-slate-700 dark:text-slate-400"
              @click="emits('click', item)">
             {{ item.name }}
         </div>
