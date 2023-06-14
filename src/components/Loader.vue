@@ -7,7 +7,7 @@ const showLoader = computed(() => store.isLoading);
 </script>
 
 <template>
-    <div v-show="showLoader" class="loader absolute h-[3px] w-[100%] bg-slate-800 opacity-0 z-20"></div>
+    <div v-show="showLoader" class="loader fixed z-50 h-[3px] w-[100%] bg-slate-800 opacity-0"></div>
 </template>
 
 <style scoped>

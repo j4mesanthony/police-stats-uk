@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia'
+import { RecycleScroller} from 'vue-virtual-scroller';
 import './style.css';
 import App from './App.vue';
 import router from './router';
@@ -18,6 +19,7 @@ app.component('DataSummaryPanel', DataSummaryPanel);
 app.component('FlexPanelItem', FlexPanelItem);
 app.component('LinkItem', LinkItem);
 app.component('Loader', Loader);
+app.component('RecycleScroller', RecycleScroller);
 app.component('StickyHeading', StickyHeading);
 
 app.use(pinia);
