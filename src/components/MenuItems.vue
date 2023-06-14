@@ -8,7 +8,6 @@ import { useStringFormatter } from '../composables/useStringFormatter';
 import { Route } from '../models/route';
 
 const emits = defineEmits(['navigate']);
-
 const { toTitleCase } = useStringFormatter();
 const { availableRoutes, goTo, router } = useNav();
 const currentRoute = computed(() => router.currentRoute.value.name);
