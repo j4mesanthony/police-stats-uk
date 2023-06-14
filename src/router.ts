@@ -6,6 +6,9 @@ const ContentWrapper = () => import('./components/ContentWrapper.vue');
 
 export default createRouter({
     history: createWebHistory(),
+    scrollBehavior() {
+        return { top: 0 }
+    },
     routes: [
         {
             name: ROUTE_NAMES.HOME,
