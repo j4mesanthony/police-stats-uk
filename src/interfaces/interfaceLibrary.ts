@@ -1,4 +1,5 @@
 import { Router, RouteRecord } from 'vue-router';
+import type { Ref } from 'vue';
 
 export interface Force {
     id: string;
@@ -87,4 +88,8 @@ export interface UseNumbers {
 
 export interface UseStringFormatter {
     toTitleCase: (input: string) => string
+}
+
+export interface UseWindowSize {
+    isMobile: Ref<boolean>;
 }

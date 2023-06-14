@@ -28,10 +28,10 @@ const formattedData = computed(() => formatNumber(props.data));
 </script>
 
 <template>
-    <FlexPanelItem class="grow basis-80">
+    <FlexPanelItem class="cursor-pointer grow basis-80" @click="goTo(props.path)">
         <p class="mb-1 text-4xl font-bold">
             <template v-if="hasPath">
-                <LinkItem @click="goTo(props.path)" :underline="false">{{ formattedData }}</LinkItem>
+                <LinkItem :underline="false">{{ formattedData }}</LinkItem>
             </template>
             <template v-else>
                 {{ formattedData }}
