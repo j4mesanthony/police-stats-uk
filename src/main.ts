@@ -10,6 +10,7 @@ import DataSummaryPanel from './components/DataSummaryPanel.vue';
 import FlexPanelItem from './components/FlexPanelItem.vue';
 import LinkItem from './components/LinkItem.vue';
 import Loader from './components/Loader.vue';
+import ScreenOverlay from './components/ScreenOverlay.vue';
 import StickyHeading from './components/StickyHeading.vue';
 
 const pinia = createPinia();
@@ -20,6 +21,7 @@ app.component('FlexPanelItem', FlexPanelItem);
 app.component('LinkItem', LinkItem);
 app.component('Loader', Loader);
 app.component('RecycleScroller', RecycleScroller);
+app.component('ScreenOverlay', ScreenOverlay);
 app.component('StickyHeading', StickyHeading);
 
 app.use(pinia);
