@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div v-if="props.isOn" class="fixed top-0 z-50 w-full h-screen backdrop-blur-lg">
+    <div v-if="props.isOn" class="fixed top-0 z-50 flex items-center justify-center w-full h-screen text-center backdrop-blur-lg">
         <slot></slot>
     </div>
 </template>

@@ -33,12 +33,10 @@ function launchModal() {
     </div>
 
     <Teleport to="body">
-      <Transition name="grow">
-        <ScreenOverlay :isOn="Data.isCrimesModalOn" @click="Data.isCrimesModalOn = false">
-          <div class="fixed z-[70] box-border shadow-md top-0 w-[90%] h-[90%] rounded-md m-10 bg-slate-800">
-            
-          </div>
-        </ScreenOverlay>
+      <Transition>
+        <PopModal heading="PopDialog" :isOn="Data.isCrimesModalOn" @close="Data.isCrimesModalOn = false">
+          <span class="text-slate-50">Content to come - aw yiss!</span>
+        </PopModal>
       </Transition>
     </Teleport>
   </div>
