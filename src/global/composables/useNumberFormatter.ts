@@ -1,4 +1,4 @@
-import { UseNumbers } from "../interfaces/interfaceLibrary"
+import { UseNumbers } from "../../interfaces/interfaceLibrary"
 
 export function useNumberFormatter(): UseNumbers {
 
