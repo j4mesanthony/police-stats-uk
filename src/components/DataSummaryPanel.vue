@@ -38,15 +38,15 @@ function onClick(path: string) {
 </script>
 
 <template>
-    <FlexPanelItem class="cursor-pointer grow basis-80" @click="onClick(props.path)">
-        <p class="mb-1 text-4xl font-bold">
+    <FlexPanelItem class="flex cursor-pointer basis-80" @click="onClick(props.path)">
+        <p class="clear-both mb-1 text-4xl font-bold">
             <template v-if="hasPath">
                 <LinkItem :underline="false">{{ formattedData }}</LinkItem>
             </template>
             <template v-else>
                 {{ formattedData }}
             </template>
+            <span class="block mt-1 text-base font-normal">{{ props.label }}</span>
         </p>
-        <p>{{ props.label }}</p>
     </FlexPanelItem>
 </template>

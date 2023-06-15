@@ -20,7 +20,7 @@ function toggleMobileMenu() {
 </script>
 
 <template>
-    <div class="fixed left-[-100px] md:left-0 transition-[left] opacity-0 md:opacity-100 md:relative md:flex md:flex-col grow md:basis-1/5">
+    <div class="fixed left-[-100px] md:left-0 transition-[left] opacity-0 md:opacity-100 md:relative md:flex md:flex-col grow">
         <MenuItems />
     </div>
 

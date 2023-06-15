@@ -51,7 +51,7 @@ if (!isCached) {
     <div>
         <StickyHeading>{{ name}}</StickyHeading>
     
-        <div v-if="name" class="flex flex-row flex-wrap w-full gap-2">
+        <div v-if="name" class="flex flex-row flex-wrap w-full gap-5">
             <DataSummaryPanel label="Total Stop Searches" :data="stopSearchTotal" />
             <DataSummaryPanel :label="JUVENILE" :data="juvenileTotal" />
             <DataSummaryPanel :label="YOUNG_ADULT" :data="youngAdultTotal" />

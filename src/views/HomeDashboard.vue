@@ -26,7 +26,7 @@ function launchModal() {
   <div>
     <StickyHeading>Dashboard</StickyHeading>
     
-    <div class="flex flex-row flex-wrap gap-2">
+    <div class="flex flex-row flex-wrap gap-5">
       <DataSummaryPanel label="Active Forces" :data="forcesCount" :path="ACTIVE_FORCES" />
       <DataSummaryPanel label="Crimes" :data="0" @click="launchModal" />
       <DataSummaryPanel label="Investigations" :data="0" />
