@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useWindowSize } from '../composables/useWindowSize';
+import { useWindowSize } from '../global/composables/useWindowSize';
 
 const emits = defineEmits(['click']);
 

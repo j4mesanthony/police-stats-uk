@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useNav } from '../composables/useNav';
-import { useNumberFormatter } from '../composables/useNumberFormatter';
+import { useNav } from '../global/composables/useNav';
+import { useNumberFormatter } from '../global/composables/useNumberFormatter';
 
 const emits = defineEmits(['click']);
 

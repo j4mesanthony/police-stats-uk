@@ -18,7 +18,7 @@ onMounted(() => {
 });
 
 function launchModal() {
-  Data.isCrimesModalOn = true
+  Data.isCrimesModalOn = true;
 }
 </script>
 
