@@ -35,7 +35,11 @@ function launchModal() {
     <Teleport to="body">
       <Transition>
         <PopModal heading="PopDialog" :isOn="Data.isCrimesModalOn" @close="Data.isCrimesModalOn = false">
-          <span class="text-slate-50">Content to come - aw yiss!</span>
+
+          <!-- TODO: D3Graph -->
+          <div class="flex p-6 border border-slate-400">
+            <span class="text-slate-400">D3 Graph to come</span>
+          </div>
         </PopModal>
       </Transition>
     </Teleport>
