@@ -3,7 +3,6 @@ import { onBeforeUnmount } from 'vue';
 import { reactive } from 'vue';
 import { HOME } from '../constants/routes';
 import { useNav } from '../composables/useNav';
-import ScreenOverlay from './ScreenOverlay.vue';
 import MenuItems from './MenuItems.vue';
 
 const { goTo } = useNav();
