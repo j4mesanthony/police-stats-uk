@@ -8,6 +8,7 @@ import router from './router';
 // TODO: Move to global index file
 import DataSummaryPanel from './components/DataSummaryPanel.vue';
 import FlexPanelItem from './components/FlexPanelItem.vue';
+import IconButton from './components/IconButton.vue';
 import LinkItem from './components/LinkItem.vue';
 import Loader from './components/Loader.vue';
 import PopModal from './components/PopModal.vue';
@@ -19,6 +20,7 @@ const app = createApp(App);
 
 app.component('DataSummaryPanel', DataSummaryPanel);
 app.component('FlexPanelItem', FlexPanelItem);
+app.component('IconButton', IconButton);
 app.component('LinkItem', LinkItem);
 app.component('Loader', Loader);
 app.component('PopModal', PopModal);
