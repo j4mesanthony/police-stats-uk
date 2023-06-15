@@ -33,7 +33,7 @@ function launchModal() {
     </div>
 
     <Teleport to="body">
-      <Transition>
+      <Transition name="fade">
         <PopModal heading="PopDialog" :isOn="Data.isCrimesModalOn" @close="Data.isCrimesModalOn = false">
 
           <!-- TODO: D3Graph -->
@@ -47,24 +47,5 @@ function launchModal() {
 </template>
 
 <style scoped>
-/* TODO: Move to animations global stylesheet */
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.25s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-
-.grow-enter-active,
-.grow-leave-active {
-  transition: width 0.25s ease;
-}
-
-.grow-enter-from,
-.grow-leave-to {
-  width: 0px;
-}
+@import '../global/styles/animations.scss';
 </style>
