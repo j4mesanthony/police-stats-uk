@@ -1,4 +1,4 @@
-import { UseWindowSize } from "../interfaces/interfaceLibrary";
+import { UseWindowSize } from "../../interfaces/interfaceLibrary";
 import { useEventListener } from "./useEventListener";
 import { onMounted, ref } from "vue";
 
