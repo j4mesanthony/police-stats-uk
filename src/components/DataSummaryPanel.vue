@@ -27,20 +27,21 @@ const { goTo } = useNav();
 const { formatNumber } = useNumberFormatter();
 const hasPath = computed(() => !!props.path);
 const formattedData = computed(() => formatNumber(props.data));
+const buttonIcon = computed(() => (props.path ? 'open_in_new' : 'fullscreen'));
 
-function onClick(path: string) {
-    if (path) {
-        goTo(path);
+function onClick() {
+    if (props.path) {
+        goTo(props.path);
         return;
     }
 
-    emits('click')
+    emits('click');
 }
 </script>
 
 <template>
-    <FlexPanelItem class="relative flex cursor-pointer basis-80" @click="onClick(props.path)">
-        <IconButton icon="expand_content" class="absolute top-[7px] right-[7px]" />
+    <FlexPanelItem class="relative flex basis-80">
+        <IconButton :icon="buttonIcon" :showOutline="false" class="absolute top-[7px] right-[7px]"  @click="onClick" />
 
         <p class="clear-both mb-1 text-4xl font-bold">
             <template v-if="hasPath">

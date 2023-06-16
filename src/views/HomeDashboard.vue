@@ -33,7 +33,7 @@ function launchModal() {
       <DataSummaryPanel label="Investigations" :data="0" />
     </div>
 
-    <StickyHeading>Buttons</StickyHeading>
+    <h1 class="mb-6 text-2xl font-bold text-slate-50">Buttons</h1>
     <div class="flex flex-row flex-wrap gap-3 mb-10">
       <IconButton icon="search" />
       <IconButton icon="done" />
