@@ -33,9 +33,9 @@ function random() {
 function visualisation() {
   const selector = selectParentAndChildren('#bars', '.bar');
   const binding = selector().data(data);
-  const creation = createNodes(binding);
+  const creator = createNodes(binding);
   
-  creation
+  creator
     .append("div")
     .attr('class', 'bar w-[1%] rounded-md bg-cyan-500');
 
