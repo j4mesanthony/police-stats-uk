@@ -2,7 +2,7 @@
 import { onBeforeUnmount } from 'vue';
 import { reactive } from 'vue';
 import { HOME } from '../constants/routes';
-import { useNav } from '../composables/useNav';
+import { useNav } from '../global/composables/useNav';
 import MenuItems from './MenuItems.vue';
 
 const { goTo } = useNav();
@@ -31,10 +31,10 @@ onBeforeUnmount(() => {
 
 <template>
     <Teleport to="body">
-        <Transition>
+        <Transition name="fade">
             <ScreenOverlay :isOn="Data.isMenuOn">
-                <div class="h-full opacity-95 bg-slate-950 w-fit">
-                    <div class="pt-20 pl-5 pr-5">
+                <div v-if="Data.isMenuOn" :class="{ 'menu-open': Data.isMenuOn }" class="absolute left-0 h-full text-left opacity-95 bg-slate-950 w-fit">
+                    <div class="pt-20 pl-0 pr-10">
                         <MenuItems @navigate="toggleMenu" />
                     </div>
                 </div>
@@ -54,14 +54,13 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-/* TODO: Move to animations global stylesheet */
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.25s ease;
-}
+@import '../global/styles/animations.scss';
 
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
+.menu-open {
+  animation-duration: 0.15s;
+  animation-name: slidein;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease-out;
 }
 </style>

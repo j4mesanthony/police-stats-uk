@@ -3,12 +3,12 @@
 </script>
 
 <template>
-    <h1 class=" text-slate-800 dark:text-cyan-500 text-sm font-semibold mb-2">UK Policing Statistics</h1>
+    <h1 class="mb-2 text-sm font-semibold text-slate-800 dark:text-cyan-500">UK Policing Statistics</h1>
    
     <router-view v-slot="{ Component, route }">
-        <transition appear mode="out-in">
+        <Transition mode="out-in">
             <component :is="Component" :key="route.path" />
-        </transition>
+        </Transition>
     </router-view>
 </template>
 

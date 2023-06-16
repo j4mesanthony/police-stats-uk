@@ -1,4 +1,4 @@
-import { UseStringFormatter } from "../interfaces/interfaceLibrary";
+import { UseStringFormatter } from "../../interfaces/interfaceLibrary";
 
 export function useStringFormatter(): UseStringFormatter {
 

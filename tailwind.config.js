@@ -9,6 +9,8 @@ export default {
     minHeight: {
       '100': '100px',
       '120': '120px',
+      '140': '140px',
+      '160': '160px',
     }
   },
   plugins: [],

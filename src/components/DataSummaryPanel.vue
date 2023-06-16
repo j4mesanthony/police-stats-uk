@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useNav } from '../composables/useNav';
-import { useNumberFormatter } from '../composables/useNumberFormatter';
+import { useNav } from '../global/composables/useNav';
+import { useNumberFormatter } from '../global/composables/useNumberFormatter';
+import IconButton from './IconButton.vue';
 
 const emits = defineEmits(['click']);
 
@@ -24,29 +25,26 @@ const props = defineProps({
 
 const { goTo } = useNav();
 const { formatNumber } = useNumberFormatter();
-const hasPath = computed(() => !!props.path);
 const formattedData = computed(() => formatNumber(props.data));
+const buttonIcon = computed(() => (props.path ? 'open_in_new' : 'fullscreen'));
 
-function onClick(path: string) {
-    if (path) {
-        goTo(path);
+function onClick() {
+    if (props.path) {
+        goTo(props.path);
         return;
     }
 
-    emits('click')
+    emits('click');
 }
 </script>
 
 <template>
-    <FlexPanelItem class="cursor-pointer grow basis-80" @click="onClick(props.path)">
-        <p class="mb-1 text-4xl font-bold">
-            <template v-if="hasPath">
-                <LinkItem :underline="false">{{ formattedData }}</LinkItem>
-            </template>
-            <template v-else>
-                {{ formattedData }}
-            </template>
+    <FlexPanelItem class="relative flex basis-80">
+        <IconButton :icon="buttonIcon" :showOutline="false" class="absolute top-[7px] right-[7px]"  @click="onClick" />
+
+        <p class="clear-both mb-1 text-4xl font-bold">
+            {{ formattedData }}
+            <span class="block mt-1 text-base font-normal">{{ props.label }}</span>
         </p>
-        <p>{{ props.label }}</p>
     </FlexPanelItem>
 </template>
