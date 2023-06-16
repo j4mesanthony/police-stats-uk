@@ -25,7 +25,6 @@ const props = defineProps({
 
 const { goTo } = useNav();
 const { formatNumber } = useNumberFormatter();
-const hasPath = computed(() => !!props.path);
 const formattedData = computed(() => formatNumber(props.data));
 const buttonIcon = computed(() => (props.path ? 'open_in_new' : 'fullscreen'));
 
@@ -44,12 +43,7 @@ function onClick() {
         <IconButton :icon="buttonIcon" :showOutline="false" class="absolute top-[7px] right-[7px]"  @click="onClick" />
 
         <p class="clear-both mb-1 text-4xl font-bold">
-            <template v-if="hasPath">
-                <LinkItem :underline="false">{{ formattedData }}</LinkItem>
-            </template>
-            <template v-else>
-                {{ formattedData }}
-            </template>
+            {{ formattedData }}
             <span class="block mt-1 text-base font-normal">{{ props.label }}</span>
         </p>
     </FlexPanelItem>
