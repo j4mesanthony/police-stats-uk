@@ -20,14 +20,15 @@ onMounted(() => {
   store.fetchForces();
 });
 
-let data = reactive([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]);
+let data = reactive([100,100,100,100,100,100,100,100,100]);
 watch(data, () => visualisation());
 
 function random() {
-  let n = 25;
-  for (let i = 0; i < n; i++) {
-    data[i] = Math.floor(Math.random()*100);
-  }
+  setInterval(() => {
+    for (let i = 0; i < 9; i++) {
+      data[i] = Math.floor(Math.random()*300);
+    }
+  }, 800);
 }
 
 function visualisation() {
@@ -37,12 +38,12 @@ function visualisation() {
   
   creator
     .append("div")
-    .attr('class', 'bar w-[1%] rounded-md bg-cyan-500');
+    .attr('class', 'bar w-[5%] rounded-md bg-gradient-to-b from-cyan-500 to-cyan-600');
 
   selector()
     .transition()
     .ease(EASE.quadOut)
-    .duration(500)
+    .duration(800)
     .style('height', (d: any) => `${d}px`);
 }
 
@@ -64,14 +65,13 @@ function launchModal() {
 
     <Teleport to="body">
       <Transition name="fade">
-        <PopModal heading="PopDialog" :isOn="Data.isCrimesModalOn" @close="Data.isCrimesModalOn = false">
-          <small class="text-slate-300">{{ data }}</small>
+        <PopModal heading="Live Data Demo" :isOn="Data.isCrimesModalOn" @close="Data.isCrimesModalOn = false">
+          <IconButton icon="play_arrow" @click="random" class="mt-3 mb-3" />
           <!-- TODO: D3Graph -->
-          <div class="relative flex p-6 border border-slate-400">
-            <div id="bars" class="relative flex flex-wrap gap-5 mb-10 h-[200px] grow"></div>
+          <div class="relative flex h-[50%] p-6 border border-slate-400">
+            <div id="bars" class="relative flex flex-wrap gap-5 mb-10 grow"></div>
           </div>
-
-          <IconButton icon="refresh" @click="random" class="mt-3" />
+          <small class="text-slate-300">{{ data }}</small>
         </PopModal>
       </Transition>
     </Teleport>
