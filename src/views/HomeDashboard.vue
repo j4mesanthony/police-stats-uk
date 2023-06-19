@@ -50,7 +50,12 @@ function launchModal() {
     <div class="flex flex-row flex-wrap gap-5 mb-10">
       <FlexPanelItem class="relative">
         <IconButton icon="fullscreen" :showOutline="false" class="absolute top-[7px] right-[7px]" />
-        <BarGraph :data="data" />
+        <BarGraph id="graph1" :data="data" />
+      </FlexPanelItem>
+
+      <FlexPanelItem class="relative">
+        <IconButton icon="fullscreen" :showOutline="false" class="absolute top-[7px] right-[7px]" />
+        <BarGraph id="graph2" :data="data" />
       </FlexPanelItem>
       
       <DataSummaryPanel label="Active Forces" :data="forcesCount" :path="ACTIVE_FORCES" />
@@ -61,9 +66,8 @@ function launchModal() {
     <Teleport to="body">
       <Transition name="fade">
         <PopModal heading="Live Data Demo" :isOn="Data.isCrimesModalOn" @close="Data.isCrimesModalOn = false">
-          <IconButton icon="play_arrow" @click="randomise" class="mt-3 mb-3" />
           <div class="relative flex p-6 border border-slate-400">
-            <div id="bars" class="relative flex flex-wrap gap-5 mb-10 grow"></div>
+            <BarGraph id="graph3" :data="data" />
           </div>
           <small class="text-slate-300">{{ data }}</small>
         </PopModal>

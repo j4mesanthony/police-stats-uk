@@ -3,16 +3,21 @@ import { watch } from 'vue';
 import { useD3BarGraph } from '../visualisations/composables/useD3BarGraph';
 
 const props = defineProps({
+    id: {
+        type: String,
+        required: true
+    },
+
     data: {
         type: Array,
         required: true
     },
 });
 
-const { visualisation } = useD3BarGraph('graph');
+const { visualisation } = useD3BarGraph(props.id);
 watch(props.data, () => visualisation(props.data));
 </script>
 
 <template>
-    <div id="graph"></div>
+    <div :id="props.id"></div>
 </template>

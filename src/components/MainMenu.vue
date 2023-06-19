@@ -7,6 +7,7 @@ import MobileMenu from './MobileMenu.vue';
 
 onMounted(() => toggleMobileMenu());
 
+const LG_BREAK_POINT = 1024;
 const Data = reactive({
     isMobileMenuOn: false
 });
@@ -15,8 +16,7 @@ useEventListener('resize', toggleMobileMenu);
 
 function toggleMobileMenu() {
     const width = window.innerWidth;
-    Data.isMobileMenuOn = width < 1024;
-    console.log(Data.isMobileMenuOn);
+    Data.isMobileMenuOn = width < LG_BREAK_POINT;
 }
 </script>
 
