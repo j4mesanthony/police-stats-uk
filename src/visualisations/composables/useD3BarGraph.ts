@@ -5,23 +5,29 @@ import { useD3Container } from './useD3Container';
 import { useEventListener } from '../../global/composables/useEventListener';
 
 const { createSvg } = useD3Container();
-const { selectParentAndChildren, EASE, createNodes } = useD3();
+const { selectParentAndChildren, EASE, createNodes, select } = useD3();
 
 export function useD3BarGraph(parentElementId: any) {
-  const width = ref(0);
-  const height = ref(0);
+  const width = ref(300);
+  const height = ref(160);
+
+  onMounted(() => {
+    createSvg(`#${parentElementId}`, width.value, height.value);
+  });
 
   useEventListener('resize', redraw);
 
   function redraw() {
     const element = d3.select(`#${parentElementId}`).node();
     width.value = element.getBoundingClientRect().width;
-    height.value = element.getBoundingClientRect().height;
-  }
+    // height.value = element.getBoundingClientRect().height;
 
-  onMounted(() => {
-    createSvg(`#${parentElementId}`, 300, 160);
-  });
+    const svgSelector = select('svg');
+    svgSelector()
+      .attr('width', width.value)
+      .attr('height', height.value)
+      .attr('viewBox', [0, 0, width.value, height.value]);
+  }
 
   function visualisation(data: any) {
       const selector = selectParentAndChildren('#svg', '.bar');
@@ -30,12 +36,12 @@ export function useD3BarGraph(parentElementId: any) {
     
       const x = d3.scaleBand()
           .domain(['A', 'B', 'C', 'D', 'E', 'F', 'G'])
-          .range([0, 300])
+          .range([0, width.value])
           .padding(0.6);
     
       const y = d3.scaleLinear()
           .domain([0, d3.max(data, (d: any) => d.value)])
-          .range([160, 0]);
+          .range([height.value, 0]);
       
       creator
         .append('rect')
