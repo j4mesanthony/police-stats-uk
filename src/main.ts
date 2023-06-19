@@ -6,6 +6,7 @@ import App from './App.vue';
 import router from './router';
 
 // TODO: Move to global index file
+import BarGraph from './components/BarGraph.vue';
 import DataSummaryPanel from './components/DataSummaryPanel.vue';
 import FlexPanelItem from './components/FlexPanelItem.vue';
 import IconButton from './components/IconButton.vue';
@@ -18,6 +19,7 @@ import StickyHeading from './components/StickyHeading.vue';
 const pinia = createPinia();
 const app = createApp(App);
 
+app.component('BarGraph', BarGraph);
 app.component('DataSummaryPanel', DataSummaryPanel);
 app.component('FlexPanelItem', FlexPanelItem);
 app.component('IconButton', IconButton);
