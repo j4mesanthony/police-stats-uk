@@ -48,7 +48,9 @@ export function useD3BarGraph(parentElementId: any) {
       
       creator
         .append('rect')
-        .attr('class', 'bar');
+        .attr('class', 'bar')
+        .attr('y', () => y(0))
+        .attr('height', 0);
     
       selector()
         .attr('x', (d: any) => x(d.category))
