@@ -53,11 +53,6 @@ function launchModal() {
         <BarGraph id="graph1" :data="data" />
       </FlexPanelItem>
 
-      <FlexPanelItem class="relative">
-        <IconButton icon="fullscreen" :showOutline="false" class="absolute top-[7px] right-[7px]" />
-        <BarGraph id="graph2" :data="data" />
-      </FlexPanelItem>
-      
       <DataSummaryPanel label="Active Forces" :data="forcesCount" :path="ACTIVE_FORCES" />
       <DataSummaryPanel label="Crimes" :data="0" @click="launchModal" />
       <DataSummaryPanel label="Investigations" :data="0" />
@@ -67,7 +62,7 @@ function launchModal() {
       <Transition name="fade">
         <PopModal heading="Live Data Demo" :isOn="Data.isCrimesModalOn" @close="Data.isCrimesModalOn = false">
           <div class="relative flex p-6 border border-slate-400">
-            <BarGraph id="graph3" :data="data" />
+            <!-- <BarGraph id="graph3" :data="data" /> -->
           </div>
           <small class="text-slate-300">{{ data }}</small>
         </PopModal>
