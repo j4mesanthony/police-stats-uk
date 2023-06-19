@@ -14,6 +14,7 @@ export function useD3BarGraph(parentElementId: any) {
 
   onMounted(() => {
     createSvg(`#${parentElementId}`, width.value, height.value);
+    redraw();
   });
 
   useEventListener('resize', redraw);

@@ -15,12 +15,13 @@ useEventListener('resize', toggleMobileMenu);
 
 function toggleMobileMenu() {
     const width = window.innerWidth;
-    Data.isMobileMenuOn = width < 768;
+    Data.isMobileMenuOn = width < 1024;
+    console.log(Data.isMobileMenuOn);
 }
 </script>
 
 <template>
-    <div class="fixed left-[-100px] md:left-0 transition-[left] opacity-0 md:opacity-100 md:relative md:flex md:flex-col grow">
+    <div class="fixed left-[-120px] lg:left-0 transition-[left] opacity-0 lg:opacity-100 lg:relative lg:flex lg:flex-col grow">
         <MenuItems />
     </div>
 
