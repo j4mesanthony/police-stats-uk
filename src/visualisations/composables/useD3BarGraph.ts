@@ -50,6 +50,7 @@ export function useD3BarGraph(parentElementId: any) {
         .append('rect')
         .attr('class', 'bar')
         .attr('y', () => y(0))
+        .attr('rx', 8)
         .attr('height', 0);
     
       selector()
