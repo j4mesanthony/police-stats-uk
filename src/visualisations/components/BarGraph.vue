@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { watch } from 'vue';
-import { useD3BarGraph } from '../visualisations/composables/useD3BarGraph';
+import { useD3BarGraph } from '../composables/useD3BarGraph';
 
 const props = defineProps({
     id: {
