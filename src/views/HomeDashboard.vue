@@ -15,7 +15,7 @@ const Data = reactive({
 onMounted(() => {
   // TODO: Refactor store action to getOrFetch data
   if (forcesCount.value > 0) return;
-  store.fetchForces();
+  store.getOrFetchForces();
 });
 
 let data = reactive([
