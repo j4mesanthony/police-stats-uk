@@ -47,13 +47,13 @@ function getTotalsOutputForMetric(metricType: StopSearchMetric, metricParam: str
         <StickyHeading>{{ name}}</StickyHeading>
     
         <div v-if="name" class="flex flex-row flex-wrap w-full gap-5">
-            <DataSummaryPanel label="Total Stop Searches" :data="stopSearchTotal" />
-            <DataSummaryPanel :label="JUVENILE" :data="juvenileTotal" />
-            <DataSummaryPanel :label="YOUNG_ADULT" :data="youngAdultTotal" />
-            <DataSummaryPanel :label="ADULT" :data="adultTotal" />
-            <DataSummaryPanel :label="MATURE" :data="matureTotal" />
-            <DataSummaryPanel :label="MALE" :data="maleTotal" />
-            <DataSummaryPanel :label="FEMALE" :data="femaleTotal" />
+            <DataSummaryPanel label="Total Stop Searches" :data="stopSearchTotal" :class="{ 'animate-pulse' : !stopSearchTotal }" />
+            <DataSummaryPanel :label="JUVENILE" :data="juvenileTotal" :class="{ 'animate-pulse' : !juvenileTotal }" />
+            <DataSummaryPanel :label="YOUNG_ADULT" :data="youngAdultTotal" :class="{ 'animate-pulse' : !youngAdultTotal }" />
+            <DataSummaryPanel :label="ADULT" :data="adultTotal" :class="{ 'animate-pulse' : !adultTotal }" />
+            <DataSummaryPanel :label="MATURE" :data="matureTotal" :class="{ 'animate-pulse' : !matureTotal }" />
+            <DataSummaryPanel :label="MALE" :data="maleTotal" :class="{ 'animate-pulse' : !maleTotal }" />
+            <DataSummaryPanel :label="FEMALE" :data="femaleTotal" :class="{ 'animate-pulse' : !femaleTotal }" />
         </div>
     </div>
 </template>
