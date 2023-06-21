@@ -35,7 +35,7 @@ function randomise() {
     for (let i = 0; i < 6; i++) {
       data[i].value = Math.floor(Math.random() * 300);
     }
-  }, 800);
+  }, 500);
 }
 
 function launchModal() {
