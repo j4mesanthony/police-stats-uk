@@ -12,7 +12,7 @@ const { goTo } = useNav();
 
 onMounted(() => {
   if (allForces.value.length > 0) return;
-  store.fetchForces();
+  store.getOrFetchForces();
 });
 
 function openForce(item: Force) {

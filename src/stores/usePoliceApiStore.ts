@@ -11,7 +11,6 @@ export const usePoliceApiStore = defineStore('policeApi', {
         allForces: [],
         forceDetails: [],
         isLoading: false,
-        selectedForceSeniorOfficers: [],
         stopSearches: {}
     }),
 
@@ -38,7 +37,10 @@ export const usePoliceApiStore = defineStore('policeApi', {
     },
 
     actions: {
-        fetchForces() {
+        getOrFetchForces() {
+            const stored: Array<Force> = this.allForces;
+            if (stored.length) return stored;
+
             this.isLoading = true;
             
             return get('forces')
@@ -49,7 +51,10 @@ export const usePoliceApiStore = defineStore('policeApi', {
                 .finally(() => this.isLoading = false);
         },
 
-        fetchForceDetails(forceId: string): Promise<ForceDetail> {
+        getOrfetchForceDetails(forceId: string): Promise<ForceDetail> | any {
+            const stored: ForceDetail | undefined = this.forceDetails.find(x => x.id == forceId);
+            if (stored) return stored;
+
             this.isLoading = true;
 
             return get(`forces/${forceId}`)
@@ -66,17 +71,6 @@ export const usePoliceApiStore = defineStore('policeApi', {
                 })
                 .finally(() => this.isLoading = false);
         },
-
-        fetchSeniorOfficers(force: string) {
-            // this.isLoading = true;
-
-            return get(`forces/${force}/people`)
-                .then((res: Array<Person>) => {
-                    this.selectedForceSeniorOfficers.push(...res);
-                })
-                // .finally(() => this.isLoading = false);
-        },
-
         
     }
 })

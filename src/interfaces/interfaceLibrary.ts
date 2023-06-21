@@ -48,7 +48,6 @@ export interface Store {
     allForces: Force[];
     forceDetails: ForceDetail[];
     isLoading: boolean;
-    selectedForceSeniorOfficers: Person[];
     stopSearches: any;
 }
 
