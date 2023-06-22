@@ -19,13 +19,13 @@ onMounted(() => {
 });
 
 let data = reactive([
-  { category: 'A', value: 85 }, 
-  { category: 'B', value: 54 }, 
-  { category: 'C', value: 22 }, 
-  { category: 'D', value: 89 }, 
-  { category: 'E', value: 12 }, 
-  { category: 'F', value: 75 },
-  { category: 'G', value: 43 },
+  { category: 'Mon', value: 85 }, 
+  { category: 'Tue', value: 54 }, 
+  { category: 'Wed', value: 22 }, 
+  { category: 'Thu', value: 89 }, 
+  { category: 'Fri', value: 12 }, 
+  { category: 'Sat', value: 75 },
+  { category: 'Sun', value: 43 },
 ]);
 
 randomise();
@@ -48,7 +48,7 @@ function launchModal() {
     <StickyHeading>Dashboard</StickyHeading>
     
     <div class="flex flex-row flex-wrap gap-5 mb-10">
-      <FlexPanelItem class="relative">
+      <FlexPanelItem class="relative basis-[300px]">
         <IconButton icon="fullscreen" :showOutline="false" class="absolute top-[7px] right-[7px]" />
         <BarGraph id="graph1" :data="data" />
       </FlexPanelItem>
