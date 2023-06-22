@@ -38,7 +38,7 @@ export function useD3BarGraph(parentElementId: any) {
       const creator = createNodes(binding);
     
       const x = d3.scaleBand()
-          .domain(['A', 'B', 'C', 'D', 'E', 'F', 'G'])
+          .domain(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
           .range([0, width.value])
           .padding(0.6);
     
