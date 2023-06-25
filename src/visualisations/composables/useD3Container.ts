@@ -1,4 +1,4 @@
-import { useD3 } from './useD3';
+import { useD3 } from './useD3Selectors';
 
 const { select } = useD3();
 

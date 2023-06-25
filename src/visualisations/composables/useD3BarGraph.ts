@@ -1,6 +1,6 @@
 import { onMounted, ref } from 'vue';
 import * as d3 from 'd3';
-import { useD3 } from './useD3';
+import { useD3 } from './useD3Selectors';
 import { useD3Container } from './useD3Container';
 import { useEventListener } from '../../global/composables/useEventListener';
 
