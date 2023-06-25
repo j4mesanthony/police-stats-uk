@@ -1,6 +1,11 @@
 import { Router, RouteRecord } from 'vue-router';
 import type { Ref } from 'vue';
 
+export interface BarGraphDataObj {
+    category: string;
+    value: number;
+}
+
 export interface Force {
     id: string;
     name: string;

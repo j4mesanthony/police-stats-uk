@@ -2,6 +2,7 @@
 import { computed, onMounted, reactive } from 'vue';
 import { usePoliceApiStore } from '../stores/usePoliceApiStore';
 import { ACTIVE_FORCES } from '../constants/routes'; 
+import { BarGraphDataObj } from '../interfaces/interfaceLibrary';
 import DataSummaryPanel from '../components/DataSummaryPanel.vue';
 import IconButton from '../components/IconButton.vue';
 
@@ -18,7 +19,8 @@ onMounted(() => {
   store.getOrFetchForces();
 });
 
-let data = reactive([
+let data: Array<BarGraphDataObj> = reactive([
+  { category: 'Mon', value: 85 }, 
   { category: 'Mon', value: 85 }, 
   { category: 'Tue', value: 54 }, 
   { category: 'Wed', value: 22 }, 

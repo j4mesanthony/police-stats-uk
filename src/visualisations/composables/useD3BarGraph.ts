@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import { useD3 } from './useD3Selectors';
 import { useD3Container } from './useD3Container';
 import { useEventListener } from '../../global/composables/useEventListener';
+import { BarGraphDataObj } from '../../interfaces/interfaceLibrary';
 
 export function useD3BarGraph(parentElementId: any) {
   const { createSvg } = useD3Container(parentElementId);
@@ -36,9 +37,11 @@ export function useD3BarGraph(parentElementId: any) {
       const selector = selectParentAndChildren(`#${parentElementId}-svg`, '.bar');
       const binding = selector().data(data);
       const creator = createNodes(binding);
-    
+      // TODO: Actually map out unique items
+      const uniqueCategories: Array<string> = data.map((x: BarGraphDataObj) => x.category);
+
       const x = d3.scaleBand()
-          .domain(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
+          .domain(uniqueCategories)
           .range([0, width.value])
           .padding(0.6);
     
