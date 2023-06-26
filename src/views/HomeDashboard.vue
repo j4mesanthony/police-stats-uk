@@ -21,7 +21,6 @@ onMounted(() => {
 
 let data: Array<BarGraphDataObj> = reactive([
   { category: 'Mon', value: 85 }, 
-  { category: 'Mon', value: 85 }, 
   { category: 'Tue', value: 54 }, 
   { category: 'Wed', value: 22 }, 
   { category: 'Thu', value: 89 }, 
@@ -34,7 +33,7 @@ randomise();
 
 function randomise() {
   setInterval(() => {
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 7; i++) {
       data[i].value = Math.floor(Math.random() * 300);
     }
   }, 500);

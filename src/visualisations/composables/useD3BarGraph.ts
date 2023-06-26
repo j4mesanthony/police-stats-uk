@@ -37,8 +37,8 @@ export function useD3BarGraph(parentElementId: any) {
       const selector = selectParentAndChildren(`#${parentElementId}-svg`, '.bar');
       const binding = selector().data(data);
       const creator = createNodes(binding);
-      // TODO: Actually map out unique items
-      const uniqueCategories: Array<string> = data.map((x: BarGraphDataObj) => x.category);
+      const dataCategories: Array<string> = data.map((x: BarGraphDataObj) => x.category);
+      const uniqueCategories: Array<string> = [...new Set(dataCategories)];
 
       const x = d3.scaleBand()
           .domain(uniqueCategories)
