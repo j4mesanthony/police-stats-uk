@@ -13,15 +13,37 @@ const props = defineProps({
         type: Array,
         required: true
     },
+
+    barColor: {
+        type: String,
+        default: ''
+    },
+
+    barPadding: {
+        type: Number,
+        default: 0.6,
+        validator: (value: number) => (value >= 0 && value <= 1)
+    },
+
+    barRadius: {
+        type: Number,
+        default: 10
+    },
+
+    duration: {
+        type: Number,
+        default: 800
+    },
 });
 
 const { visualisation } = useD3BarGraph(props.id);
+
 const options = computed<BarGraphOptions>(() => {
     return {
-        bar_fill: 'cyan',
-        bar_radius: 10,
-        duration: 5000,
-        padding: 0.6
+        bar_fill: props.barColor,
+        bar_radius: props.barRadius,
+        duration: props.duration,
+        padding: props.barPadding
     }
 });
 

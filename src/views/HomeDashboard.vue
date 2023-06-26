@@ -51,7 +51,7 @@ function launchModal() {
     <div class="flex flex-row flex-wrap gap-5 mb-10">
       <FlexPanelItem class="relative basis-[300px]">
         <IconButton icon="fullscreen" :showOutline="false" class="absolute top-[7px] right-[7px]" />
-        <BarGraph id="graph1" :data="data" />
+        <BarGraph id="graph1" :data="data" barColor="cyan" :barPadding="0.6" />
       </FlexPanelItem>
 
       <DataSummaryPanel label="Active Forces" :data="forcesCount" :path="ACTIVE_FORCES" />
