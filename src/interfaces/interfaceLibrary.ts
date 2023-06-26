@@ -1,6 +1,18 @@
 import { Router, RouteRecord } from 'vue-router';
 import type { Ref } from 'vue';
 
+export interface BarGraphDataObj {
+    category: string;
+    value: number;
+}
+
+export interface BarGraphOptions {
+    bar_fill?: string;
+    bar_radius?: number;
+    duration?: number;
+    padding?: number;
+}
+
 export interface Force {
     id: string;
     name: string;
@@ -48,7 +60,6 @@ export interface Store {
     allForces: Force[];
     forceDetails: ForceDetail[];
     isLoading: boolean;
-    selectedForceSeniorOfficers: Person[];
     stopSearches: any;
 }
 

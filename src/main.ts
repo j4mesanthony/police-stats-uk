@@ -15,9 +15,13 @@ import PopModal from './components/PopModal.vue';
 import ScreenOverlay from './components/ScreenOverlay.vue';
 import StickyHeading from './components/StickyHeading.vue';
 
+// TODO: Move to visualisations index file
+import BarGraph from './visualisations/components/BarGraph.vue';
+
 const pinia = createPinia();
 const app = createApp(App);
 
+app.component('BarGraph', BarGraph);
 app.component('DataSummaryPanel', DataSummaryPanel);
 app.component('FlexPanelItem', FlexPanelItem);
 app.component('IconButton', IconButton);

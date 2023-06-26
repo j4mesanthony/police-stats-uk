@@ -42,7 +42,7 @@ onBeforeUnmount(() => {
         </Transition>
     </Teleport>
 
-    <div class="fixed z-[60] top-0 border-b-[1px] flex border-slate-600 flex-row w-full p-5 md:hidden shadow-lg bg-slate-900">
+    <div class="fixed z-[60] top-0 border-b-[1px] flex border-slate-600 flex-row w-full p-5 lg:hidden shadow-lg bg-slate-800 select-none">
         <div class="flex">
             <LinkItem icon="menu" iconSize="18px" small :underline="false" @click="toggleMenu">Menu</LinkItem>
         </div>
