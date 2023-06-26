@@ -9,8 +9,8 @@ export function useD3BarGraph(parentElementId: any) {
   const { createSvg } = useD3Container(parentElementId);
   const { selectParentAndChildren, EASE, createNodes, select } = useD3Selectors();
 
-  const width = ref(300);
-  const height = ref(160);
+  const width = ref(0);
+  const height = ref(0);
   const barClass = 'bar';
 
   let x: any = null;
@@ -27,7 +27,7 @@ export function useD3BarGraph(parentElementId: any) {
     const element = d3.select(`#${parentElementId}`).node();
     width.value = element.getBoundingClientRect().width;
     // TODO: Fix responsive height bug (keeps shrinking)
-    // height.value = element.getBoundingClientRect().height; 
+    height.value = 160; 
 
     const svgSelector = select(`#${parentElementId}-svg`);
     svgSelector()
