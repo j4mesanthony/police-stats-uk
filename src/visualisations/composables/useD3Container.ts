@@ -1,6 +1,6 @@
-import { useD3 } from './useD3Selectors';
+import { useD3Selectors } from './useD3Selectors';
 
-const { select } = useD3();
+const { select } = useD3Selectors();
 
 export function useD3Container(parentId: string) {
 

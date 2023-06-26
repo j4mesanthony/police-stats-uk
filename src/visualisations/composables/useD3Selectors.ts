@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 
-export function useD3() {
+export function useD3Selectors() {
 
     function select(elementSelector: string) {
         const selector = () => d3.select(elementSelector);

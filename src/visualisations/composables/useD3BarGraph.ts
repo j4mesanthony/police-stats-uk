@@ -1,17 +1,18 @@
 import { onMounted, ref } from 'vue';
 import * as d3 from 'd3';
-import { useD3 } from './useD3Selectors';
+import { useD3Selectors } from './useD3Selectors';
 import { useD3Container } from './useD3Container';
 import { useEventListener } from '../../global/composables/useEventListener';
 import { BarGraphDataObj } from '../../interfaces/interfaceLibrary';
 
 export function useD3BarGraph(parentElementId: any) {
   const { createSvg } = useD3Container(parentElementId);
-  const { selectParentAndChildren, EASE, createNodes, select } = useD3();
+  const { selectParentAndChildren, EASE, createNodes, select } = useD3Selectors();
 
   // TODO: Need to set these on initial load
   const width = ref(300);
   const height = ref(160);
+  const barClass = 'bar';
 
   onMounted(() => {
     createSvg(`#${parentElementId}`, width.value, height.value);
@@ -34,7 +35,7 @@ export function useD3BarGraph(parentElementId: any) {
   }
 
   function visualisation(data: any) {
-      const selector = selectParentAndChildren(`#${parentElementId}-svg`, '.bar');
+      const selector = selectParentAndChildren(`#${parentElementId}-svg`, `.${barClass}`);
       const binding = selector().data(data);
       const creator = createNodes(binding);
       const dataCategories: Array<string> = data.map((x: BarGraphDataObj) => x.category);
@@ -51,7 +52,7 @@ export function useD3BarGraph(parentElementId: any) {
       
       creator
         .append('rect')
-        .attr('class', 'bar')
+        .attr('class', barClass)
         .attr('y', () => y(0))
         .attr('rx', 8)
         .attr('height', 0);
