@@ -6,6 +6,13 @@ export interface BarGraphDataObj {
     value: number;
 }
 
+export interface BarGraphOptions {
+    bar_fill?: string;
+    bar_radius?: number;
+    duration?: number;
+    padding?: number;
+}
+
 export interface Force {
     id: string;
     name: string;
