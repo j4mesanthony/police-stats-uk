@@ -14,6 +14,9 @@ export function useD3BarGraph(parentElementId: any) {
   const height = ref(160);
   const barClass = 'bar';
 
+  let x: any = null;
+  let y: any = null;
+
   onMounted(() => {
     createSvg(`#${parentElementId}`, width.value, height.value);
     redraw();
@@ -35,21 +38,29 @@ export function useD3BarGraph(parentElementId: any) {
   }
 
   function visualisation(data: any) {
-      const selector = selectParentAndChildren(`#${parentElementId}-svg`, `.${barClass}`);
+    axis(data);
+    bars(data);
+  }
+
+  function axis(data: Array<BarGraphDataObj>) {
+    const dataCategories: Array<string> = data.map((x: BarGraphDataObj) => x.category);
+    const uniqueCategories: Array<string> = [...new Set(dataCategories)];
+
+    x = d3.scaleBand()
+        .domain(uniqueCategories)
+        .range([0, width.value])
+        .padding(0.6);
+  
+    y = d3.scaleLinear()
+        .domain([0, d3.max(data, (d: any) => d.value)])
+        .range([height.value, 0]);
+  }
+
+  function bars(data: Array<BarGraphDataObj>) {
+    const selector = selectParentAndChildren(`#${parentElementId}-svg`, `.${barClass}`);
       const binding = selector().data(data);
       const creator = createNodes(binding);
-      const dataCategories: Array<string> = data.map((x: BarGraphDataObj) => x.category);
-      const uniqueCategories: Array<string> = [...new Set(dataCategories)];
 
-      const x = d3.scaleBand()
-          .domain(uniqueCategories)
-          .range([0, width.value])
-          .padding(0.6);
-    
-      const y = d3.scaleLinear()
-          .domain([0, d3.max(data, (d: any) => d.value)])
-          .range([height.value, 0]);
-      
       creator
         .append('rect')
         .attr('class', barClass)
@@ -66,9 +77,9 @@ export function useD3BarGraph(parentElementId: any) {
         .duration(800)
         .attr('y', (d: any) => y(d.value))
         .attr('height', (d: any) => y(0) - y(d.value));
-    }
+  }
 
-    return {
-      visualisation
-    }
+  return {
+    visualisation
+  }
 }
