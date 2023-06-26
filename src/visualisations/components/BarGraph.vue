@@ -16,7 +16,6 @@ const props = defineProps({
 });
 
 const { visualisation } = useD3BarGraph(props.id);
-
 const options = computed<BarGraphOptions>(() => {
     return {
         bar_fill: 'cyan',
