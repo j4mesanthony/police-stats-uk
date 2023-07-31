@@ -7,14 +7,14 @@ Follow these instructions to get a copy of the project up and running on your lo
 Ensure you have the following software installed on your system:
 
 - [Node.js](https://nodejs.org) (v14.x or above)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [npm](https://www.npmjs.com/)
 
 ### Installation
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/police-stat-uk.git
+git clone https://github.com/yourusername/police-stat-uks.git
 ```
 
 2. Change into the project directory:
