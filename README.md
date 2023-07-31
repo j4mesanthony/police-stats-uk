@@ -14,7 +14,7 @@ Ensure you have the following software installed on your system:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/police-stats-uk.git
+git clone https://github.com/j4mesanthony/police-stats-uk.git
 ```
 
 2. Change into the project directory:
