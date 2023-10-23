@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { reactive } from 'vue';
-import { useEventListener } from '../global/composables/useEventListener';
+import { useEventListener } from '../../global/composables/useEventListener';
 import MenuItems from './MenuItems.vue';
 import MobileMenu from './MobileMenu.vue';
 

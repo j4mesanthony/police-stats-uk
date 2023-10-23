@@ -6,14 +6,14 @@ import App from './App.vue';
 import router from './router';
 
 // TODO: Move to global index file
-import DataSummaryPanel from './components/DataSummaryPanel.vue';
-import FlexPanelItem from './components/FlexPanelItem.vue';
-import IconButton from './components/IconButton.vue';
-import LinkItem from './components/LinkItem.vue';
-import Loader from './components/Loader.vue';
-import PopModal from './components/PopModal.vue';
-import ScreenOverlay from './components/ScreenOverlay.vue';
-import StickyHeading from './components/StickyHeading.vue';
+import DataSummaryPanel from './components/ui/DataSummaryPanel.vue';
+import FlexPanelItem from './components/ui/FlexPanelItem.vue';
+import IconButton from './components/ui/IconButton.vue';
+import LinkItem from './components/ui/LinkItem.vue';
+import Loader from './components/ui/Loader.vue';
+import PopModal from './modules//modal/PopModal.vue';
+import ScreenOverlay from './modules//modal/ScreenOverlay.vue';
+import StickyHeading from './components/ui/StickyHeading.vue';
 
 // TODO: Move to visualisations index file
 import BarGraph from './visualisations/components/BarGraph.vue';

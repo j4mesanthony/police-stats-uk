@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useWindowSize } from '../global/composables/useWindowSize';
-import { useScrollPosition } from '../global/composables/useScrollPosition'; 
+import { useWindowSize } from '../../global/composables/useWindowSize';
+import { useScrollPosition } from '../../global/composables/useScrollPosition'; 
 
 const { isMobile } = useWindowSize();
 const { yPos } = useScrollPosition();

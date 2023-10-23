@@ -3,8 +3,8 @@ import { computed, onMounted, reactive } from 'vue';
 import { usePoliceApiStore } from '../stores/usePoliceApiStore';
 import { ACTIVE_FORCES } from '../constants/routes'; 
 import { BarGraphDataObj } from '../interfaces/interfaceLibrary';
-import DataSummaryPanel from '../components/DataSummaryPanel.vue';
-import IconButton from '../components/IconButton.vue';
+import DataSummaryPanel from '../components/ui/DataSummaryPanel.vue';
+import IconButton from '../components/ui/IconButton.vue';
 
 const store = usePoliceApiStore(); 
 const forcesCount = computed(() => store.forcesCount);

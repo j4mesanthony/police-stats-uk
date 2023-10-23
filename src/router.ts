@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import * as ROUTE_NAMES from './constants/routes';
 import * as VIEWS from './views/index.views';
 
-const ContentWrapper = () => import('./components/ContentWrapper.vue');
+const ContentWrapper = () => import('./layouts/ContentWrapper.vue');
 
 export default createRouter({
     history: createWebHistory(),
