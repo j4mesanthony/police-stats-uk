@@ -73,5 +73,5 @@ function launchModal() {
 </template>
 
 <style scoped>
-@import '@/global/styles/animations.scss';
+@import '@/styles/animations.scss';
 </style>

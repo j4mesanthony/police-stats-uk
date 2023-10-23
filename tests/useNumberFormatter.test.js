@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { useNumberFormatter } from '@/global/composables/useNumberFormatter';
+import { useNumberFormatter } from '@/utils/useNumberFormatter';
 
 describe('formatNumber', () => {
     const { formatNumber } = useNumberFormatter();

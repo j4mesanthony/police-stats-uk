@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { useStringFormatter } from '@/global/composables/useStringFormatter';
+import { useStringFormatter } from '@/utils/useStringFormatter';
 
 describe('toTitleCase', () => {
     const { toTitleCase } = useStringFormatter();

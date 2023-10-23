@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { usePoliceApiStore } from '@/stores/usePoliceApiStore';
-import { useWindowSize } from '@/global/composables/useWindowSize';
+import { useWindowSize } from '@/composables/useWindowSize';
 
 const { isMobile } = useWindowSize();
 const store = usePoliceApiStore();

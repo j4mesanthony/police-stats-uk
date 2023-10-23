@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import { usePoliceApiStore } from '@/stores/usePoliceApiStore';
-import { useNav } from '@/global/composables/useNav';
+import { useNav } from '@/composables/useNav';
 import { FORCE } from '@/constants/routes';
 import { Force } from '@/interfaces/interfaceLibrary';
 import DataTable from '@/components/ui/DataTable.vue';

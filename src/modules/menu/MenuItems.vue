@@ -3,8 +3,8 @@ import MenuButtonGroup from './MenuButtonGroup.vue';
 import MenuButton from './MenuButton.vue';
 import { computed } from 'vue';
 import { RouteRecord } from 'vue-router';
-import { useNav } from '@/global/composables/useNav';
-import { useStringFormatter } from '@/global/composables/useStringFormatter';
+import { useNav } from '@/composables/useNav';
+import { useStringFormatter } from '@/utils/useStringFormatter';
 import { Route } from '@/models/route';
 
 const emits = defineEmits(['navigate']);
