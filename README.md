@@ -1,3 +1,6 @@
+## Current Deployment
+On [Vercel - Police Stats UK](https://police-stats-uk.vercel.app/home)
+
 ## Getting Started
 
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
