@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import { usePoliceApiStore } from '../stores/usePoliceApiStore';
-import { useNav } from '../global/composables/useNav';
-import { FORCE } from '../constants/routes';
-import { Force } from '../interfaces/interfaceLibrary';
-import DataTable from '../components/ui/DataTable.vue';
+import { usePoliceApiStore } from '@/stores/usePoliceApiStore';
+import { useNav } from '@/global/composables/useNav';
+import { FORCE } from '@/constants/routes';
+import { Force } from '@/interfaces/interfaceLibrary';
+import DataTable from '@/components/ui/DataTable.vue';
 
 const store = usePoliceApiStore();
 const allForces = computed(() => store.allForces);

@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import { useEventListener } from './useEventListener';
-import { UseScrollPosition } from '../../interfaces/interfaceLibrary';
+import { UseScrollPosition } from '@/interfaces/interfaceLibrary';
 
 export function useScrollPosition(element: any = window): UseScrollPosition {
     const xPos = ref(0);

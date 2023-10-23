@@ -1,4 +1,4 @@
-import { Route as IRoute } from '../interfaces/interfaceLibrary';
+import { Route as IRoute } from '@/interfaces/interfaceLibrary';
 
 export class Route implements IRoute {
 

@@ -1,4 +1,4 @@
-import { Force as IForce } from '../interfaces/interfaceLibrary';
+import { Force as IForce } from '@/interfaces/interfaceLibrary';
 
 export class Force implements IForce {
 

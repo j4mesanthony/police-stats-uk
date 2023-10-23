@@ -1,7 +1,7 @@
 
 import { useRouter } from 'vue-router';
 import { Router, RouteRecord } from 'vue-router';
-import { UseNav } from '../../interfaces/interfaceLibrary';
+import { UseNav } from '@/interfaces/interfaceLibrary';
 
 export function useNav(): UseNav {
     const router: Router = useRouter();

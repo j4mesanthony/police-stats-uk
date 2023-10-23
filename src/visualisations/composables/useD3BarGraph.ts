@@ -2,8 +2,8 @@ import { onMounted, ref } from 'vue';
 import * as d3 from 'd3';
 import { useD3Selectors } from './useD3Selectors';
 import { useD3Container } from './useD3Container';
-import { useEventListener } from '../../global/composables/useEventListener';
-import { BarGraphDataObj, BarGraphOptions } from '../../interfaces/interfaceLibrary';
+import { useEventListener } from '@/global/composables/useEventListener';
+import { BarGraphDataObj, BarGraphOptions } from '@/interfaces/interfaceLibrary';
 
 export function useD3BarGraph(parentElementId: any) {
   const { createSvg } = useD3Container(parentElementId);

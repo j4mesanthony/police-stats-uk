@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
-import { useFetch } from '../global/composables/useFetch';
-import { StopSearchMetric } from '../types/typeLibrary';
-import { ForceDetail, StopSearch, Store } from '../interfaces/interfaceLibrary';
-import { Force } from '../models/force';
+import { useFetch } from '@/global/composables/useFetch';
+import { StopSearchMetric } from '@/types/typeLibrary';
+import { ForceDetail, StopSearch, Store } from '@/interfaces/interfaceLibrary';
+import { Force } from '@/models/force';
 
 const { get } = useFetch();
 

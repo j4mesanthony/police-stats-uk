@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue';
-import { useD3BarGraph } from '../composables/useD3BarGraph';
-import { BarGraphOptions } from '../../interfaces/interfaceLibrary';
+import { useD3BarGraph } from '@/visualisations/composables/useD3BarGraph';
+import { BarGraphOptions } from '@/interfaces/interfaceLibrary';
 
 const props = defineProps({
     id: {

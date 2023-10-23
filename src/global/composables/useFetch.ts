@@ -1,4 +1,4 @@
-import { UseFetch } from '../../interfaces/interfaceLibrary';
+import { UseFetch } from '@/interfaces/interfaceLibrary';
 
 const API_BASE = 'https://data.police.uk/api/';
 

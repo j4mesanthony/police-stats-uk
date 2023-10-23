@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive } from 'vue';
-import { usePoliceApiStore } from '../stores/usePoliceApiStore';
-import { ACTIVE_FORCES } from '../constants/routes'; 
-import { BarGraphDataObj } from '../interfaces/interfaceLibrary';
-import DataSummaryPanel from '../components/ui/DataSummaryPanel.vue';
-import IconButton from '../components/ui/IconButton.vue';
+import { usePoliceApiStore } from '@/stores/usePoliceApiStore';
+import { ACTIVE_FORCES } from '@/constants/routes'; 
+import { BarGraphDataObj } from '@/interfaces/interfaceLibrary';
+import DataSummaryPanel from '@/components/ui/DataSummaryPanel.vue';
+import IconButton from '@/components/ui/IconButton.vue';
 
 const store = usePoliceApiStore(); 
 const forcesCount = computed(() => store.forcesCount);
@@ -73,5 +73,5 @@ function launchModal() {
 </template>
 
 <style scoped>
-@import '../global/styles/animations.scss';
+@import '@/global/styles/animations.scss';
 </style>

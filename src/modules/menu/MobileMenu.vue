@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onBeforeUnmount } from 'vue';
 import { reactive } from 'vue';
-import { HOME } from '../../constants/routes';
-import { useNav } from '../../global/composables/useNav';
+import { HOME } from '@/constants/routes';
+import { useNav } from '@/global/composables/useNav';
 import MenuItems from './MenuItems.vue';
 
 const { goTo } = useNav();
@@ -54,7 +54,7 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-@import '../../global/styles/animations.scss';
+@import '@/global/styles/animations.scss';
 
 .menu-open {
   animation-duration: 0.15s;

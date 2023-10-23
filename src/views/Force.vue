@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { StopSearch } from '../interfaces/interfaceLibrary';
-import { StopSearchMetric } from '../types/typeLibrary';
-import { JUVENILE, YOUNG_ADULT, ADULT, MATURE } from '../constants/ages';
-import { MALE, FEMALE } from '../constants/genders';
-import { AGE, GENDER } from '../constants/stopSearchMetrics';
-import { usePoliceApiStore } from '../stores/usePoliceApiStore';
-import DataSummaryPanel from '../components/ui/DataSummaryPanel.vue';
+import { StopSearch } from '@/interfaces/interfaceLibrary';
+import { StopSearchMetric } from '@/types/typeLibrary';
+import { JUVENILE, YOUNG_ADULT, ADULT, MATURE } from '@/constants/ages';
+import { MALE, FEMALE } from '@/constants/genders';
+import { AGE, GENDER } from '@/constants/stopSearchMetrics';
+import { usePoliceApiStore } from '@/stores/usePoliceApiStore';
+import DataSummaryPanel from '@/components/ui/DataSummaryPanel.vue';
 
 const props = defineProps<{
     id: string

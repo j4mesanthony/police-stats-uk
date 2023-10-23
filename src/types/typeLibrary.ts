@@ -1,4 +1,4 @@
-import { AGE, GENDER, REASON} from '../constants/stopSearchMetrics';
+import { AGE, GENDER, REASON} from '@/constants/stopSearchMetrics';
 
 export type NumberOrString = number | string;
 
