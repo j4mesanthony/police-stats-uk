@@ -30,6 +30,7 @@ const { isMobile } = useWindowSize();
 
 <template>
     <RecycleScroller
+        v-if="data?.length"
         :key="data.length"
         :items="props.data"
         :item-size="props.itemSize"

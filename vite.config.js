@@ -5,6 +5,10 @@ import { fileURLToPath, URL } from 'node:url';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  test: {
+    include: ['**/*.spec.js'],
+    environment: 'jsdom'
+  },
   server: {
     port: 5174
   },
