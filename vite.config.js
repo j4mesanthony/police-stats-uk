@@ -6,7 +6,8 @@ import { fileURLToPath, URL } from 'node:url';
 export default defineConfig({
   plugins: [vue()],
   test: {
-    include: ['**/*.spec.js']
+    include: ['**/*.spec.js'],
+    environment: 'jsdom'
   },
   server: {
     port: 5174
